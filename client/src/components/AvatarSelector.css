@@ -1,0 +1,99 @@
+/* AvatarSelector.css */
+
+.avatar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+  gap: 15px;
+  padding: 10px 0;
+  margin-bottom: 10px;
+}
+
+.avatar-btn {
+  background: #000;
+  border: 1px solid #1a1a1a;
+  padding: 5px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  aspect-ratio: 1 / 1;
+}
+
+.avatar-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%) opacity(0.5);
+  transition: all 0.3s ease;
+}
+
+/* Hover State */
+.avatar-btn:hover {
+  border-color: #339b13;
+}
+
+.avatar-btn:hover img {
+  filter: grayscale(50%) opacity(0.8);
+}
+
+/* Selected State - The "Uplink" Look */
+.avatar-btn.selected {
+  border-color: #339b13;
+  background: rgba(51, 155, 19, 0.05);
+  box-shadow: 0 0 15px rgba(51, 155, 19, 0.2);
+}
+
+.avatar-btn.selected img {
+  filter: grayscale(0%) opacity(1);
+  transform: scale(1.05);
+}
+
+/* Corner Accents for Selected Button */
+.avatar-btn.selected::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid #339b13;
+  border-left: 2px solid #339b13;
+}
+
+.avatar-btn.selected::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 10px;
+  height: 10px;
+  border-bottom: 2px solid #339b13;
+  border-right: 2px solid #339b13;
+}
+
+/* Responsive Grid */
+@media (max-width: 400px) {
+  .avatar-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.active-dot {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 4px;
+  height: 4px;
+  background-color: #339b13;
+  border-radius: 50%;
+  box-shadow: 0 0 5px #339b13;
+  animation: pulse-dot 1.5s infinite;
+}
+
+@keyframes pulse-dot {
+  0% { opacity: 1; }
+  50% { opacity: 0.3; }
+  100% { opacity: 1; }
+}

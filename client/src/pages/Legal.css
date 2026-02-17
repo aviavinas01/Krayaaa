@@ -1,0 +1,75 @@
+/* Dark, readable, matrix-style legal documents */
+.legal-container {
+    background-color: #050505;
+    color: #ccc;
+    min-height: 100vh;
+    padding: 4rem 2rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.legal-header {
+    max-width: 800px;
+    margin: 0 auto 3rem auto;
+    border-bottom: 1px solid #333;
+    padding-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.legal-header h1 {
+    color: #fff;
+    font-family: 'Space Mono', monospace;
+    font-size: 2rem;
+    margin: 0;
+}
+
+.back-link {
+    color: #188125;
+    text-decoration: none;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.9rem;
+    border: 1px solid #188125;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s;
+}
+
+.back-link:hover {
+    background: #188125;
+    color: #000;
+}
+
+.legal-content {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #111;
+    padding: 2rem;
+    border: 1px solid #222;
+    border-radius: 4px;
+}
+
+.last-updated {
+    font-family: 'Space Mono', monospace;
+    color: #666;
+    font-size: 0.8rem;
+    margin-bottom: 2rem;
+    display: block;
+}
+
+.legal-content section {
+    margin-bottom: 2.5rem;
+}
+
+.legal-content h2 {
+    color: #eee;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    border-left: 3px solid #188125;
+    padding-left: 1rem;
+}
+
+.legal-content p {
+    line-height: 1.6;
+    color: #aaa;
+    font-size: 0.95rem;
+}

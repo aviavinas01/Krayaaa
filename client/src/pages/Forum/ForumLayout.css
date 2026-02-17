@@ -1,0 +1,147 @@
+/* ===== Forum Layout Styles ===== */
+
+.forum-layout {
+  display: flex;
+  min-height: 100vh;
+  background: #000000;
+  gap: 2rem;
+  padding: 4rem;
+  padding-top: 50px !important;
+  max-width: 1600px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ===== Sidebar ===== */
+.forum-sidebar {
+  flex: 0 0 285px;
+  margin-top: 20px;
+  background: #000000;
+  border: 2px solid var(--primary-glow);
+  border-radius: 15px;
+  padding: 2rem 0.5rem;
+  height: fit-content;
+  position: sticky;
+  top: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.forum-sidebar:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== Main Content Area ===== */
+.forum-main {
+  flex: 1;
+  min-width: 0; /* Prevents flex item from overflowing */
+  background: transparent;
+}
+
+/* ===== Responsive Design ===== */
+
+/* Large Desktop */
+@media screen and (min-width: 1600px) {
+  .forum-layout {
+    padding: 3rem 4rem;
+    gap: 2.5rem;
+  }
+
+  .forum-sidebar {
+    flex: 0 0 320px;
+    padding: 2rem;
+  }
+}
+
+/* Desktop */
+@media screen and (max-width: 1200px) {
+  .forum-layout {
+    padding: 2rem 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .forum-sidebar {
+    flex: 0 0 260px;
+    padding: 1.25rem;
+  }
+}
+/* ... [Keep all your Desktop styles above this line exactly as they are] ... */
+
+
+/* ===== Responsive Design: Tablet & Mobile Integration ===== */
+
+/* Tablet Breakpoint (Where you switch to Column Layout) */
+@media screen and (max-width: 968px) {
+  .forum-layout {
+    flex-direction: column;
+    padding: 1.5rem 1rem;
+    gap: 0px !important;
+  }
+
+  /* --- LOGIC: Mobile Sidebar Behavior --- */
+
+  /* CASE 1: Sub-pages (Threads, Profile, etc.) -> HIDE SIDEBAR COMPLETELY */
+  .forum-sidebar.mobile-hidden {
+    display: none;
+  }
+
+  /* CASE 2: Home Page -> SHOW TICKER CONTAINER */
+  .forum-sidebar.mobile-visible {
+    display: block;
+    flex: none !important;
+    height: auto !important;
+    width: 100%;
+    position: relative;
+    margin-top: 85px;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+    margin-bottom: 0px !important;
+    padding-bottom: 0px !important;  /* Space between Ticker and Main Content */
+  }
+
+  .forum-main {
+    width: 100%;
+  }
+  .forum-main .forum-header{
+    margin-top : 0px !important;
+    padding-top: 10px !important;
+  }
+
+  .forum-main .forum-header h1{
+    margin-top: 0 !important;
+  }
+}
+
+/* Mobile Breakpoint */
+@media screen and (max-width: 768px) {
+  .forum-layout {
+    padding: 1rem 0.75rem; /* Layout padding */
+    gap: 0rem;
+  }
+
+  /* Ensure padding/borders don't accidentally reappear on smaller screens */
+  .forum-sidebar.mobile-visible {
+    padding: 0;
+    border: none;
+    border-radius: 0;
+  }
+}
+
+/* Small Mobile Breakpoint */
+@media screen and (max-width: 480px) {
+  .forum-layout {
+    padding: 0.75rem 0.5rem;
+  }
+  
+  /* Optional: Make ticker touch screen edges on very small phones */
+  .forum-sidebar.mobile-visible {
+    width: calc(100% + 1rem); /* Force width wider than container */
+    margin-left: -0.5rem;     /* Pull left to touch edge */
+    margin-right: -0.5rem;    /* Pull right to touch edge */
+  }
+}
+
+/* ... [Keep Accessibility & Print styles as they were] ... */

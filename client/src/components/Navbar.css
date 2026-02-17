@@ -1,0 +1,485 @@
+/* =========================================
+   PREMIUM NAVBAR STYLES (Desktop & Global)
+   ========================================= */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 3rem;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(20, 20, 20, 0.95) 100%);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(205, 230, 18, 0.2);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+  
+  /* UPDATED: Animation Properties */
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0); /* Default State: Visible */
+  
+  height: 50px;
+}
+
+/* NEW CLASS: Hides the navbar by sliding it UP */
+.navbar.navbar-hidden {
+  transform: translateY(-100%);
+  box-shadow: none; /* remove shadow when hidden for performance */
+}
+
+.navbar::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    var(--primary) 20%, 
+    var(--primary)  50%, 
+    var(--primary)  80%, 
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.navbar:hover::before {
+  opacity: 1;
+}
+
+/* ===== Left Section (Brand) ===== */
+
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.navbar-left svg {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 0 10px (15, 184, 18, 0.3));
+}
+
+.navbar-left:hover {
+  transform: translateY(-2px);
+  color: var(--primary-glow);
+}
+
+.navbar-left:hover svg {
+  transform: rotate(15deg) scale(1.1);
+  filter: drop-shadow(0 0 20px rgba(18, 128, 20, 0.6));
+}
+
+/* ===== Center Navigation (Desktop Only) ===== */
+.navbar-links {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.navbar-links a {
+  position: relative;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  font-family: monospace;
+  font-weight: 500;
+  font-size: 0.9rem;
+  letter-spacing: 0.3px;
+  padding: 0.4rem 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: capitalize;
+}
+
+.navbar-links a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: linear-gradient(90deg, var(--primary), var(--primary-glow));
+  transform: translateX(-50%);
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar-links a:hover {
+  color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.navbar-links a:hover::before {
+  width: 100%;
+}
+
+.navbar-links a.active {
+  color: var(--primary-glow);
+  font-weight: 600;
+}
+
+.navbar-links a.active::before {
+  width: 100%;
+  background: #0c0c0c;
+}
+
+/* ===== Right Section (Profile & Actions) ===== */
+.navbar-right-side {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-left: auto;
+  z-index: 100;
+}
+
+/* Sign In Button */
+.navbar-right-side .sign-in-btn {
+  text-decoration: none;
+  color: #c1c0c0;
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0.5rem 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  background: transparent;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+.navbar-right-side .sign-in-btn:hover {
+  background: #000000;
+  color: var(--primary);
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+}
+
+.profile-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #e5e7eb;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.profile-link.active {
+  color: var(--primary);
+}
+
+/* ===== Notification Dropdown Styles ===== */
+.notification-wrapper {
+  position: relative;
+  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.notification-btn {
+  background: transparent;
+  border: none;
+  color: #c1c0c0;
+  font-size: 1.2rem;
+  padding: 8px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.notification-btn:hover {
+  color: var(--primary);
+  background: rgba(51, 155, 19, 0.1);
+  transform: translateY(-1px);
+}
+
+.notification-btn .dot {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 8px;
+  height: 8px;
+  background-color: #ff1744;
+  border-radius: 50%;
+  border: 2px solid #000;
+  box-shadow: 0 0 5px #ff1744;
+  animation: pulse-dot 2s infinite;
+}
+
+.notification-dropdown {
+  position: absolute;
+  top: 140%;
+  right: -5px;
+  width: 320px;
+  background: #0a0a0a;
+  border: 1px solid #1f1f1f;
+  border-top: 2px solid var(--primary);
+  border-radius: 6px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
+  z-index: 2000;
+  overflow: hidden;
+  font-family: 'Courier New', monospace;
+  animation: slideDown 0.2s ease-out forwards;
+}
+
+.notification-dropdown .empty {
+  padding: 20px;
+  text-align: center;
+  color: #737477;
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+.notification-item {
+  display: block;
+  padding: 15px;
+  text-decoration: none;
+  border-bottom: 1px solid #1a1a1a;
+  transition: background 0.2s;
+  color: #ccc;
+}
+
+.notification-item:hover {
+  background: rgba(51, 155, 19, 0.05);
+}
+
+.notification-item.unread {
+  background: rgba(51, 155, 19, 0.08);
+  border-left: 3px solid var(--primary);
+}
+
+.notification-item strong {
+  display: block;
+  font-size: 0.9rem;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.notification-item p {
+  font-size: 0.8rem;
+  color: #aaa;
+  margin: 0 0 6px 0;
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.notification-item span {
+  font-size: 0.7rem;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.see-more {
+  display: block;
+  text-align: center;
+  padding: 12px;
+  font-size: 0.8rem;
+  color: #a8c0a0;
+  background: #050505;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.2s;
+}
+
+.see-more:hover {
+  color: var(--primary);
+  background: #080808;
+}
+
+/* Animations */
+@keyframes pulse-dot {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.notification-dropdown::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  right: 14px;
+  width: 12px;
+  height: 12px;
+  background: var(--primary);
+  transform: rotate(45deg);
+  z-index: -1;
+}
+
+/* Global Padding for fixed navbar */
+html {
+  scroll-padding-top: 60px;
+}
+
+/* Default: Hide PS5 Mobile Nav on Desktop */
+.mobile-ps5-nav {
+  display: none;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN (Mobile & Tablet)
+   ========================================= */
+
+@media screen and (max-width: 968px) {
+  .navbar {
+    padding: 0.5rem 1.5rem;
+  }
+  .navbar-links {
+    gap: 1.5rem;
+  }
+  .navbar-links a {
+    font-size: 0.85rem;
+  }
+}
+
+/* --- MOBILE VIEW (Max-Width: 768px) --- */
+@media screen and (max-width: 768px) {
+
+  /* 1. Reset Layout for Mobile */
+  .navbar {
+    padding: 0.5rem 1rem;
+    height: 60px; /* Taller to fit icons */
+    justify-content: space-between;
+  }
+
+  /* 2. Hide Desktop Links */
+  .navbar-links {
+    display: none !important;
+  }
+
+  /* 3. SHOW PS5 NAV - Centered Absolute */
+  .mobile-ps5-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px; /* Space between buttons */
+    
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+  }
+
+  /* 4. PS5 Button Styles */
+  .ps5-btn {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    color: #555;
+    text-decoration: none;
+  }
+
+  .ps5-btn svg {
+    width: 14px;
+    height: 14px;
+    transition: all 0.3s ease;
+  }
+
+  /* Specific Button Colors & Glows */
+  /* TRIANGLE (Forums) - Green */
+  .ps5-btn.triangle { color: #0fb812; }
+  .ps5-btn.triangle:active {
+    background: rgba(15, 184, 18, 0.2);
+    box-shadow: 0 0 15px rgba(15, 184, 18, 0.6);
+    transform: translateY(2px) scale(0.9);
+  }
+
+  /* SQUARE (Market) - Pink */
+  .ps5-btn.square { color: #d648d7; }
+  .ps5-btn.square:active {
+    background: rgba(214, 72, 215, 0.2);
+    box-shadow: 0 0 15px rgba(214, 72, 215, 0.6);
+    transform: translateY(2px) scale(0.9);
+  }
+
+  /* CIRCLE (Resources) - Red */
+  .ps5-btn.circle { color: #f14e4e; }
+  .ps5-btn.circle:active {
+    background: rgba(241, 78, 78, 0.2);
+    box-shadow: 0 0 15px rgba(241, 78, 78, 0.6);
+    transform: translateY(2px) scale(0.9);
+  }
+
+  /* CROSS (Rentals) - Blue */
+  .ps5-btn.cross { color: #4f8cf5; }
+  .ps5-btn.cross svg { width: 12px; height: 12px; }
+  .ps5-btn.cross:active {
+    background: rgba(79, 140, 245, 0.2);
+    box-shadow: 0 0 15px rgba(79, 140, 245, 0.6);
+    transform: translateY(2px) scale(0.9);
+  }
+
+  /* 5. Right Side (Profile/Sign In) Mobile Adjustments */
+  .navbar-right-side {
+    gap: 0.8rem;
+  }
+  
+  .navbar-right-side .sign-in-btn {
+    padding: 0.4rem 1rem;
+    font-size: 0.75rem;
+  }
+
+  /* 1. Make Bell Tiny */
+  .notification-btn {
+    font-size: 0.75rem !important;  /* Very small icon (approx 12px) */
+    padding: 6px !important;        /* Minimal padding */
+    width: 26px !important;         /* Fixed tiny width */
+    height: 26px !important;        /* Fixed tiny height */
+    min-width: 0 !important;        /* Prevent flexing larger */
+  }
+
+  /* 2. Adjust the Red Dot to be micro-sized */
+  .notification-btn .dot {
+    top: 4px !important;
+    right: 5px !important;
+    width: 5px !important;          /* Tiny dot */
+    height: 5px !important;
+    border-width: 1px !important;   /* Thin border */
+    box-shadow: 0 0 3px #ff1744;    /* Smaller glow */
+  }
+}
+
+/* Very Small Phones */
+@media screen and (max-width: 360px) {
+  .mobile-ps5-nav {
+    gap: 8px;
+  }
+  .ps5-btn {
+    width: 28px;
+    height: 28px;
+  }
+}

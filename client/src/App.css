@@ -1,0 +1,165 @@
+/* client/src/App.css */
+
+/* 1. DEFINE YOUR GLOBAL COLORS */
+:root {
+  --krayaa-green: #2fac04;
+  --krayaa-soft-green: #a8c0a0;
+  --krayaa-muted: #444;
+  --krayaa-black: #000000;
+  --krayaa-dark-gray: #0a0a0a;
+  --krayaa-border: #1a1a1a;
+  --font-serif:   serif;
+  --font-mono:  monospace;
+}
+/* index.css */
+
+/* 1. DEFAULT THEME (Your current Green/Black) */
+:root {
+  --bg-color: #050505;
+  --bg-card: #0a0a0a;
+  --text-main: #ffffff;
+  --text-dim: #aaaaaa;
+  
+  /* The Main Accent Color */
+  --primary: #188125;          /* Neon Green */
+  --primary-glow: rgba(24, 129, 37, 0.4);
+  --primary-dim: #0f5218;
+}
+
+/* 2. THEME OVERRIDES */
+
+/* Cyber Blue */
+body.theme-blue {
+  --primary: #0fa4d6;          /* Cyan/Electric Blue */
+  --primary-glow: rgba(81, 246, 255, 0.675);
+  --primary-dim: #19c2cb;
+}
+
+/* Midas Gold */
+body.theme-gold {
+  --primary: #f4d213;          /* Gold */
+  --primary-glow: rgba(239, 215, 73, 0.942);
+  --primary-dim: #b09b24;
+}
+
+/* Neutral Pink */
+body.theme-pink {
+  --primary: #f010f0;          /* Magenta/Neon Pink */
+  --primary-glow: rgba(255, 0, 255, 0.4);
+  --primary-dim: #990099;
+}
+
+/* Void Purple */
+body.theme-purple {
+  --primary: #b149f2;          /* Electric Purple */
+  --primary-glow: rgba(157, 0, 255, 0.4);
+  --primary-dim: #5e0099;
+}
+
+/* Crimson Red */
+body.theme-red {
+  --primary: #eb4343;          /* Glitch Red */
+  --primary-glow: rgba(255, 0, 60, 0.4);
+  --primary-dim: #990024;
+}
+
+/* Sunset Orange */
+body.theme-orange {
+  --primary: #ffa600;          /* Blaze Orange */
+  --primary-glow: rgba(255, 136, 0, 0.4);
+  --primary-dim: #995200;
+}
+
+/* 2. GLOBAL RESET */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--krayaa-black);
+  color: var(--krayaa-soft-green);
+  font-family: var(--font-serif);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Ensure the main container doesn't restrict layout */
+.container {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Global Link Reset */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Global Button Transition */
+button {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* =========================================
+   MOBILE RESPONSIVE OVERRIDES (Small Screens)
+   Paste this at the bottom of App.css
+   ========================================= */
+
+@media screen and (max-width: 768px) {
+  
+  /* 1. Global Layout Fixes */
+  /* Reduces the base font size slightly so 'rem' units shrink automatically */
+  html {
+    font-size: 14px; 
+  }
+
+  body {
+    overflow-x: hidden; /* Prevents horizontal scrollbar if elements are too wide */
+  }
+
+  /* Adds breathing room on the sides so text doesn't hit the screen edge */
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 100%;
+    max-width: 100vw;
+  }
+
+  /* 2. Tame the "Huge" Fonts */
+  h1 { font-size: 1.8rem !important; line-height: 1.2; }
+  h2 { font-size: 1.5rem !important;  }
+  h3 { font-size: 1.25rem !important; }
+  h4, h5, h6 { font-size: 1.1rem !important; }
+
+  p, span, li, a {
+    font-size: 1rem; /* Standard readable size for mobile */
+    line-height: 1.5;
+  }
+
+  /* 3. Fix Oversized Icons */
+  /* This targets React Icons (svgs) globally on mobile */
+  svg {
+    height: 1.5rem; /* Cap height to approx 21px */
+    width: 1.5rem;
+    vertical-align: middle;
+  }
+
+  /* Exception: If you have a specific 'hero' icon that needs to be big, 
+     you can override this later with a specific class */
+
+  /* 4. Form & Button Scaling */
+  button, input, select, textarea {
+    font-size: 16px !important; /* Prevents iOS from zooming in when you click an input */
+    padding: 10px 15px;         /* Larger touch targets for fingers */
+    max-width: 100%;
+  }
+
+  /* 5. Mobile Grid / Flex Adjustments */
+  /* If you use flexbox for side-by-side layouts, this stacks them vertically */
+  .row, .flex-container {
+    flex-direction: column;
+  }
+}

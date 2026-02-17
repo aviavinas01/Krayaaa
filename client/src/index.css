@@ -1,0 +1,223 @@
+/* 1. IMPORT THE FONTS AT THE VERY TOP */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;500;800&family=Space+Grotesk:wght@300;700&display=swap');
+
+/* 2. DEFINE VARIABLES (Optional but good for management) */
+:root {
+  --font-main: 'Space Grotesk', sans-serif;
+  --font-tech: 'JetBrains Mono', monospace;
+}
+
+/* 3. THE NUCLEAR RESET - FORCE EVERYTHING TO USE SPACE GROTESK BY DEFAULT */
+* {
+  font-family: 'Space Grotesk', sans-serif !important;
+  -webkit-font-smoothing: antialiased; /* Makes text look crisp */
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 4. OVERRIDE INPUTS & BUTTONS (They often resist global changes) */
+button, input, textarea, select, option {
+  font-family: 'Space Grotesk', sans-serif !important;
+}
+
+/* 5. APPLY JETBRAINS MONO TO SPECIFIC DATA ELEMENTS */
+/* I've added common classes from your previous code like prices, IDs, and code */
+code, 
+pre, 
+.card-id, 
+.price-tag, 
+.gold-star-badge, 
+.score,
+.slider-hint,
+.rental-prices span {
+  font-family: 'JetBrains Mono', monospace !important;
+  letter-spacing: -0.5px; /* Tweak mono spacing */
+}
+
+/* OPTIONAL: If you want HEADERS to be extra bold Space Grotesk */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 700 !important;
+}
+ 
+
+/* Global styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100%;
+  height: 100%;
+  background: #0a0a0a;
+  overflow-x: hidden;
+}
+/* FORCE FULL WIDTH for the main container */
+.container {
+  width: 100% !important;
+  max-width: 100% !important; /* Removes the "boxing" effect */
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-x: hidden; /* Prevents horizontal scrollbar */
+}
+
+/* Ensure the home container also stretches */
+.home-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+#root {
+  width: 100%;
+  min-height: 100vh;
+  background: #0a0a0a;
+}
+/* In your existing index.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* This is crucial for mobile layout calculation */
+}
+
+/* ResourceModal-----------------------------------------------------------------------------------------------------------------------------*/ 
+/* Resource Card Styling */
+.resource-card {
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    gap: 15px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.resource-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.card-content { flex: 1; }
+
+.badge {
+    font-size: 0.75rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.badge-blue { background: #e3f2fd; color: #1976d2; }
+.badge-orange { background: #fff3e0; color: #f57c00; }
+
+.card-title { margin: 10px 0; font-size: 1.1rem; color: #333; }
+.card-meta { font-size: 0.9rem; color: #666; margin-bottom: 15px; }
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #f0f0f0;
+    padding-top: 10px;
+    font-size: 0.85rem;
+    color: #888;
+}
+
+.view-btn {
+    text-decoration: none;
+    color: white;
+    background-color: #222;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    transition: background 0.2s;
+}
+.view-btn:hover { background-color: #000; }
+/* Modal Styling */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.locked-input {
+    background-color: #f3f3f3;
+    color: #777;
+    border: 1px solid #ddd;
+    cursor: not-allowed;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.form-group input, .form-group select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.req { color: red; }
+.error-msg { color: #d9534f; background: #fde8e8; padding: 10px; border-radius: 5px; margin-bottom: 15px; }
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.submit-btn {
+    background: #27ae60;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.submit-btn:disabled { background: #95d5b2; }
+
+.cancel-btn {
+    background: transparent;
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+/*--------------------------------------------------------------------------------------------------------------------------------------*/

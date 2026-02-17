@@ -1,0 +1,227 @@
+:root {
+  --term-green: #339b13;
+  --term-dim: #1a4d09;
+  --term-text: #a8c0a0;
+  --term-bg: #000000;
+  --term-border: #1f1f1f;
+  --font-head: 'Georgia', serif;
+  --font-code: 'Courier New', monospace;
+}
+
+/* --- Page Container --- */
+.login-page {
+  width: 100%;
+  /* Changed from height: 100vh to min-height to prevent cutting off content on small phones */
+  min-height: 100vh; 
+  background-color: var(--term-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* --- The Main Card --- */
+.login-card {
+  display: flex;
+  width: 100%;
+  max-width: 900px;
+  /* Changed to min-height so it can grow if needed, but stays tall on desktop */
+  min-height: 550px; 
+  border: 1px solid var(--term-border);
+  background: #050505;
+  box-shadow: 0 0 20px rgba(0,0,0,0.8); /* Subtle depth */
+}
+
+/* --- Left Side: Branding --- */
+.login-hero {
+  flex: 1;
+  background: linear-gradient(135deg, #0a0a0a 0%, #000 100%);
+  border-right: 1px solid var(--term-border);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+}
+
+.login-hero h1 {
+  font-family: var(--font-head);
+  font-size: 3.5rem;
+  color: var(--term-green);
+  margin: 0;
+  letter-spacing: -2px;
+  line-height: 1;
+}
+
+.login-hero p {
+  font-family: var(--font-code);
+  color: var(--term-text);
+  font-size: 0.9rem;
+  margin: 15px 0 30px 0;
+  opacity: 0.8;
+  line-height: 1.5;
+}
+
+.hero-features {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.hero-features span {
+  font-family: var(--font-code);
+  font-size: 0.8rem;
+  color: var(--term-dim);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+}
+
+/* Added a small arrow for decoration */
+.hero-features span::before {
+    content: ">";
+    margin-right: 10px;
+    color: var(--term-green);
+}
+
+/* --- Right Side: Action Area --- */
+.login-action-area {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background-color: var(--term-bg);
+}
+
+.auth-container {
+  width: 100%;
+  max-width: 320px;
+}
+
+.auth-container h2 {
+  font-family: var(--font-head);
+  font-size: 1.8rem;
+  color: #fff;
+  margin-bottom: 8px;
+  margin-top: 0;
+}
+
+.auth-subtitle {
+  font-family: var(--font-code);
+  font-size: 0.75rem;
+  color: #666; /* Slightly lighter for readability */
+  margin-bottom: 40px;
+  display: block;
+}
+
+/* --- Google Button (Professional/Terminal Style) --- */
+.google-login-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: transparent;
+  border: 1px solid var(--term-border);
+  color: #fff;
+  padding: 14px;
+  font-family: var(--font-code);
+  font-size: 0.85rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.google-login-btn img {
+  width: 18px;
+  filter: grayscale(100%); /* Keeps it matching the theme */
+  transition: filter 0.2s;
+}
+
+.google-login-btn:hover {
+  border-color: var(--term-green);
+  background: rgba(51, 155, 19, 0.05);
+  box-shadow: 0 0 10px rgba(51, 155, 19, 0.1);
+}
+
+.google-login-btn:hover img {
+  filter: grayscale(0%);
+}
+
+/* --- Footer Text --- */
+.auth-footer {
+  margin-top: 30px;
+  font-family: var(--font-code);
+  font-size: 0.7rem;
+  color: #444;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.auth-footer strong {
+  color: var(--term-green);
+}
+
+/* --- MOBILE & TABLET OPTIMIZATION --- */
+@media (max-width: 768px) {
+  .login-card {
+    flex-direction: column;
+    height: auto;
+    min-height: auto; /* Remove height restrictions */
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .login-hero {
+    padding: 30px;
+    border-right: none;
+    border-bottom: 1px solid var(--term-border);
+    text-align: center; /* Center align branding on mobile */
+    align-items: center;
+  }
+
+  .hero-features {
+    align-items: center; /* Center features on mobile */
+  }
+
+  .login-action-area {
+    padding: 40px 20px; /* Reduce side padding */
+  }
+  
+  .login-hero h1 {
+      font-size: 2.5rem; /* Shrink title slightly */
+  }
+}
+
+/* --- SMALL MOBILE SCREENS (iPhone SE etc) --- */
+@media (max-width: 480px) {
+    .login-page {
+        padding: 10px; /* Use more screen real estate */
+    }
+
+    .login-hero {
+        padding: 25px 15px;
+    }
+
+    .login-hero h1 {
+        font-size: 2rem; /* Significantly smaller to fit screen */
+    }
+    
+    .hero-features {
+        display: none; /* Optional: Hide features list on very small screens to focus on Login */
+    }
+
+    .login-action-area {
+        padding: 30px 15px;
+    }
+
+    .auth-container h2 {
+        font-size: 1.5rem;
+    }
+    
+    .auth-subtitle {
+        margin-bottom: 25px;
+    }
+}

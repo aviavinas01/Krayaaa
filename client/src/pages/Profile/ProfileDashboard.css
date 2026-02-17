@@ -1,0 +1,214 @@
+:root {
+   
+  --krayaa-black: #000000;
+  --krayaa-dark-gray: #0a0a0a;
+  --krayaa-border: #1a1a1a;
+  --font-serif: 'Georgia', serif;
+  --font-mono: 'Courier New', monospace;
+}
+
+.profile-dashboard {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--krayaa-black);
+  color: #ffffff;
+  margin-top: 50px; 
+}
+
+/* =========================================
+   DESKTOP STYLES (UNCHANGED)
+   ========================================= */
+.profile-sidebar {
+  width: 280px;
+  background-color: var(--krayaa-dark-gray);
+  border-right: 1px solid var(--primary-glow);
+  display: flex;
+  flex-direction: column;
+  padding: 40px 0;
+  position: fixed;
+  height: 100vh;
+  z-index: 900; 
+  top: 50px; 
+  margin-bottom: 100px;
+}
+
+.sidebar-links {
+  flex-grow: 1; 
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 20px;
+}
+
+.sidebar-links a {
+  font-family: var(--font-mono);
+  text-decoration: none;
+  color: #d2cfcf;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  padding: 15px 20px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sidebar-links a:hover {
+  color: #ffffff;
+  border-left: 2px solid var(--primary);
+  padding-left: 25px;
+}
+
+.sidebar-links a.active {
+  color: var(--primary-glow);
+  background-color: #0d1a08;
+  border: 1px solid var(--primary);
+}
+
+.sidebar-logout {
+  margin: 20px;
+  padding: 15px;
+  background: transparent;
+  border: 1px solid #311;
+  color: #ff4444;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.sidebar-logout:hover {
+  background-color: #ff4444;
+  color: #000;
+}
+
+.sidebar-icon {
+  display: none;
+}
+
+.profile-content {
+  flex-grow: 1;
+  margin-left: 280px;
+  padding: 60px 80px;
+  max-width: 1200px;
+}
+
+.profile-content h1, 
+.profile-content h2 {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  color: #fff;
+  margin-bottom: 30px;
+}
+
+
+/* =========================================
+   SMALLER SCREEN DESIGN (Updated: Thinner & Smaller)
+   ========================================= */
+@media (max-width: 768px) {
+  
+  .profile-dashboard {
+    margin-top: 60px;
+  }
+
+  /* 1. Sidebar Container: Thinner and closer to edge */
+  .profile-sidebar {
+    width: auto;
+    height: auto;
+    min-height: 0;
+    border-radius: 50px;
+    /* Reduced padding makes the pill thinner */
+    padding: 15px 6px; 
+    
+    position: fixed;
+    top: 50%;
+    /* Moved closer to the left edge (was 15px) */
+    left: 8px; 
+    transform: translateY(-50%);
+    bottom: auto;
+    
+    background-color: rgba(10, 10, 10, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    z-index: 1000;
+    
+    align-items: center;
+    gap: 10px; /* Reduced gap between sections */
+  }
+
+  .sidebar-links {
+    flex-grow: 0;
+    padding: 0;
+    gap: 8px; /* Tighter gap between icons */
+    width: 100%;
+    align-items: center;
+  }
+
+  /* 2. Link/Button Size: Smaller touch targets */
+  .sidebar-links a,
+  .sidebar-logout {
+    padding: 0; /* Remove padding, use Flex centering */
+    /* Reduced from 40px to 32px */
+    width: 27px;
+    height: 27px; 
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    border: none;
+    border-radius: 50%;
+  }
+
+  /* Specific logout adjustments reset */
+  .sidebar-logout {
+    margin: 0;
+    margin-top: 5px; 
+  }
+
+  /* 3. Icon Size: Visually smaller */
+  .sidebar-icon {
+    display: block;
+    /* Reduced from 1.3rem to 1rem (standard size) */
+    font-size: 0.7rem; 
+  }
+
+  /* Active state adjustments for smaller size */
+  .sidebar-links a.active {
+    background-color: var(--primary-dim);
+    color: #000;
+    border: none;
+    box-shadow: 0 0 8px rgba(47, 172, 4, 0.4);
+  }
+
+  .sidebar-links a:hover {
+    padding-left: 0; /* Reset desktop hover */
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--primary-dim);
+  }
+
+  .sidebar-text {
+    display: none;
+  }
+
+  /* 4. Content Area: More space for content now */
+  .profile-content {
+    margin-left: 0; 
+    /* Reduced left padding because sidebar is thinner */
+    padding-left: 55px; 
+    padding-right: 15px; /* Ensure right side has padding too */
+    width: 100%;
+  }
+
+  .profile-content h1, 
+  .profile-content h2 {
+    font-size: 1.5rem; /* Slightly smaller headers for mobile */
+  }
+}

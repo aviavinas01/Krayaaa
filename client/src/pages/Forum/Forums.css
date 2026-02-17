@@ -1,0 +1,178 @@
+/* ===== GLOBAL VARIABLES ===== */
+:root {
+  --bg-black: #000000;
+  --bg-panel: #0a0a0a;
+  --border-dim: #1c261e;
+  --text-bright: #f0f0f0;
+  --text-dim: #888888;
+}
+
+/* ===== PAGE & CONTAINER ===== */
+.forum-page {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg-black);
+  padding-bottom: 4rem;
+}
+
+.forum-container {
+  width: 100%;
+  max-width: 1000px; /* Limits width so lines aren't too long to read */
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* ===== HEADER ===== */
+.forum-header {
+  margin-bottom: 2.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--primary-glow);
+}
+
+.header-decoration {
+  width: 40px;
+  height: 4px;
+  background: var(--bg-black);
+  margin-bottom: 1rem;
+  box-shadow: 0 0 10px var(--primary-glow);
+}
+
+.forum-header h1 {
+  font-family: 'Inter', sans-serif; /* Use your main font */
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -1px;
+}
+
+.forum-header p {
+  color: var(--text-dim);
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* ===== STACK LAYOUT (The Core Request) ===== */
+.thread-stack {
+  display: flex;
+  flex-direction: column; /* Stacks items vertically */
+  gap: 1rem;              /* Space between bars */
+  width: 100%;
+}
+
+/* ===== THE ROW CARD ===== */
+.thread-row-card {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  background: #000000;
+  border: 1px solid var(--primary-glow);
+  padding: 1.5rem 2rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  overflow: hidden; /* Keeps the strip contained */
+}
+
+/* Hover Effect: Entire card brightens slightly */
+.thread-row-card:hover {
+  background: var(--primary-glow);
+  border-color: var(--primary-glow);
+  transform: translateX(5px); /* Slide effect */
+}
+
+/* 1. The Green Status Strip (Left side) */
+.card-status-strip {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--primary);
+  transition: all 0.3s ease;
+}
+
+/* On hover, the strip turns green and glows */
+.thread-row-card:hover .card-status-strip {
+  background: var(--accent-green);
+  box-shadow: 2px 0 15px rgba(51, 155, 19, 0.5);
+}
+
+/* 2. Middle Content */
+.card-content {
+  flex: 1; /* Takes up all available space */
+  padding-right: 2rem;
+}
+
+.card-content h2 {
+  font-size: 1.4rem;
+  color: var(--text-bright);
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.thread-row-card:hover .card-content h2 {
+  color: var(--accent-green);
+}
+
+.card-content p {
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  margin: 0;
+  line-height: 1.5;
+  max-width: 90%;
+}
+
+/* 3. Action Area (Right side) */
+.card-action {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-dim);
+  font-weight: bold;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  transition: color 0.3s;
+  white-space: nowrap; /* Prevents wrapping */
+}
+
+.action-arrow {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+/* Hover: Action text turns green, Arrow moves right */
+.thread-row-card:hover .card-action {
+  color: var(--text-bright);
+}
+
+.thread-row-card:hover .action-arrow {
+  transform: translateX(5px);
+  color: var(--accent-green);
+}
+
+/* ===== LOADING ANIMATION ===== */
+.forum-loading-container {
+  text-align: center;
+  margin-top: 5rem;
+  color: var(--primary-glow);
+  font-family: monospace;
+}
+
+/* ===== RESPONSIVE TWEAKS ===== */
+@media screen and (max-width: 600px) {
+  .thread-row-card {
+    padding: 1.25rem;
+    flex-direction: column; /* Stack content inside card for very small phones */
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .card-content {
+    padding-right: 0;
+  }
+
+  .card-action {
+    align-self: flex-end; /* Push 'OPEN' button to bottom right */
+  }
+}

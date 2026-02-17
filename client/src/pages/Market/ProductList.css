@@ -1,0 +1,432 @@
+/* ===== Marketplace - Professional Dark Theme ===== */
+
+.product-list-page {
+  min-height: 100vh;
+  background: #0a0a0a;
+  padding: 3.5rem 1.5rem;
+  font-family: serif;
+}
+
+/* ===== Filter Controls ===== */
+.filter-controls {
+  max-width: 1400px;
+  margin: 0 auto 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* ===== Search Bar ===== */
+.search-bar-container {
+  width: 100%;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.875rem 1.25rem;
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 2px;
+  color: #ffffffea;
+  font-family: monospace;
+  font-size: 0.9375rem;
+  letter-spacing: 0.3px;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: #8a8b88;
+  font-family: monospace;
+}
+
+.search-input:focus {
+  border-color: var(--primary-glow);
+  background: #141414;
+  box-shadow: 0 0 0 3px rgba(31, 87, 16, 0.1);
+}
+
+/* ===== Category Filter Bar ===== */
+.category-filter-bar {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.category-btn {
+  padding: 0.625rem 1.25rem;
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 2px;
+  color: #c8c9c7;
+  font-family: monospace;
+  font-size: 0.8125rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.category-btn:hover {
+  background: var(--primary-glow);
+  border-color: var(--primary-glow);
+  color: #d4e5c4;
+}
+
+.category-btn.active {
+  background: var(--primary-glow);
+  border-color: var(--primary-glow);
+  color: #e8f4d8;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== Available Items Title ===== */
+.available-items-title {
+  max-width: 1400px;
+  margin: 0 auto 2rem;
+  font-family: serif;
+  font-size: 1.75rem;
+  font-weight: 400;
+  color: #c8d8b8;
+  letter-spacing: 1px;
+  border-bottom: 1px solid var(--primary-glow);
+  padding-bottom: 0.875rem;
+}
+
+/* ===== Product Grid ===== */
+.product-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ===== Product Card Link ===== */
+.product-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+/* ===== Product Card ===== */
+.product-card {
+  background: grayscale 100%;
+  border: 2px solid #262626;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card:hover {
+  border-color: var(--primary);
+}
+
+.product-card img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(100%);
+  transition:0.4s;
+  background: #0a0a0a;
+  border-bottom: 1px solid var(--primary-glow);
+}
+.product-card:hover img {
+  filter: grayscale(0%); /* Full color on hover */
+}
+
+/* ===== Product Card Info ===== */
+.product-card-info {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+  background: #141414;
+}
+
+.product-card-info h3 {
+  font-family: serif;
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #8f908f !important;
+  margin: 0;
+  letter-spacing: 0.3px;
+  line-height: 1.4;
+}
+
+.product-card-category {
+  font-family: monospace;
+  font-size: 0.6875rem;
+  color: #6a7a5a;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
+  padding: 0.25rem 0.5rem;
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  width: fit-content;
+  border-radius: 1px;
+}
+
+.product-card-seller {
+  font-family: serif;
+  font-size: 0.8125rem;
+  color: #7a8a6a;
+  margin: 0;
+  font-style: italic;
+  letter-spacing: 0.2px;
+}
+
+.product-card-price {
+  font-family: monospace;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin: 0.5rem 0 0;
+  letter-spacing: 0.5px;
+  padding-top: 0.75rem;
+  border-top: 1px solid #262626;
+  margin-top: auto;
+}
+
+.product-card:hover .product-card-price {
+  color: var(--primary-glow);
+}
+
+/* ===== No Products Message ===== */
+.no-products {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 4rem 2rem;
+  font-family: serif;
+  font-size: 1.125rem;
+  color: var(--primary);
+  background: #141414;
+  border: 1px dashed #2a2a2a;
+  border-radius: 2px;
+  letter-spacing: 0.5px;
+}
+
+/* ===== Floating Add Button ===== */
+.floating-add-btn {
+  position: fixed;
+  bottom: 2.5rem;
+  right: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.875rem 1.5rem;
+  background: var(--primary-glow);
+  border: 1px solid var(--primary-glow);
+  border-radius: 20px;
+  color: #ffffff;
+  font-family: monospace;
+  font-size: 0.875rem;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 12px rgba(31, 87, 16, 0.3);
+  transition: all 0.2s ease;
+  z-index: 100;
+}
+
+.floating-add-btn:hover {
+  background: var(--primary);
+  border-color: var(--primary-glow);
+  box-shadow: 0 6px 16px rgba(31, 87, 16, 0.4);
+  transform: translateY(-2px);
+}
+
+.floating-add-btn svg {
+  font-size: 0.875rem;
+}
+
+.add-product-text {
+  font-family: monospace;
+  letter-spacing: 0.5px;
+}
+
+/* ===== Responsive Design ===== */
+
+/* Large Desktop */
+@media screen and (min-width: 1600px) {
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  }
+  .product-card img {
+    height: 280px;
+  }
+}
+
+/* Tablet (Landscape) */
+@media screen and (max-width: 968px) {
+  .product-list-page {
+    padding: 2rem 1.25rem;
+  }
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  .product-card img {
+    height: 180px;
+  }
+}
+
+/* Mobile (Phones) - FIXED LAYOUT */
+@media screen and (max-width: 768px) {
+  
+  /* 1. Fix Navbar Overlap & Page Container */
+  .product-list-page {
+    padding: 1rem;         /* Space on sides */
+    padding-top: 5rem;     /* Extra space at top so Search doesn't hit Navbar */
+    overflow-x: hidden;    /* PREVENTS the screen from scrolling sideways */
+    width: 100%;
+  }
+
+  /* 2. Smaller Search & Filter Section */
+  .filter-controls {
+    margin-bottom: 1.25rem;
+    gap: 0.75rem;
+    width: 100%;
+  }
+
+  .search-input {
+    padding: 0.5rem 0.75rem; /* Smaller padding */
+    font-size: 0.8rem;       /* Smaller text */
+    height: 30px;   
+    border-radius: 15px;         /* Fixed compact height */
+  }
+
+  .category-filter-bar {
+    display: flex;
+    /* Tighter gap between buttons */
+    gap: 6px; 
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    /* Remove bottom padding to tighten the container height */
+    padding-bottom: 0; 
+    /* Centers items vertically to prevent stretching */
+    align-items: center; 
+    -webkit-overflow-scrolling: touch;
+   
+    scrollbar-width: none; 
+  }
+  
+  .category-filter-bar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .category-btn {
+    /* Drastically reduce internal spacing */
+    padding: 4px 10px; 
+    font-size: 8px !important; 
+    line-height: 1; 
+    border-radius: 18px;    
+    white-space: nowrap;
+    flex-shrink: 0;   
+    border-width: 1px;  
+    letter-spacing: -0.5px;
+  }
+
+
+  .available-items-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid #1a1a1a;
+    padding-bottom: 0.5rem;
+    font-style: italic;
+
+  }
+
+  /* 3. The Grid - 2 Columns (Standard Mobile Layout) */
+  .product-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 0.75rem; /* Balanced gap */
+    width: 100%;
+  }
+
+  /* 4. Compact Product Card */
+  .product-card {
+    border-radius: 17px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .product-card img {
+    height: 140px; /* Good height for 2-column view */
+    width: 100%;
+  }
+
+  .product-card-info {
+    padding: 0.65rem;
+    gap: 0.25rem;
+  }
+
+  .product-card-info h3 {
+    font-size: 0.8rem;
+    line-height: 1.3;
+    height: 2.6em;       /* Height for exactly 2 lines of text */
+    overflow: hidden;    /* Cuts off anything longer than 2 lines */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  .product-card-category {
+    font-size: 0.55rem;
+    padding: 0.15rem 0.35rem;
+  }
+
+  .product-card-seller {
+    font-size: 0.65rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .product-card-price {
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+    padding-top: 0.4rem;
+  }
+
+  /* 5. Floating Button - Smaller & tucked in corner */
+  .floating-add-btn {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    padding: 0;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    justify-content: center;
+  }
+  
+  .add-product-text {
+    display: none;
+  }
+  
+  .floating-add-btn svg {
+    font-size: 1.1rem;
+    margin: 0;
+  }
+}
+
+/* Accessibility & Print */
+@media (prefers-reduced-motion: reduce) {
+  .product-card, .category-btn, .search-input, .floating-add-btn {
+    transition: none;
+  }
+}
+
+@media print {
+  .floating-add-btn, .filter-controls { display: none; }
+  .product-list-page { background: none; }
+  .product-card { break-inside: avoid; border-color: #000; }
+}

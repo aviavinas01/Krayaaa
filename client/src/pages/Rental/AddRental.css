@@ -1,0 +1,362 @@
+/* --- CONTAINER SETUP --- */
+.rental-container {
+  position: relative;
+  max-width: 600px;
+  margin: 60px auto;
+  background: var(--term-card);
+  padding: 40px;
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  overflow: hidden; /* Clips the traveling line */
+  border-radius: 8px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
+  /* Star Field Background Effect */
+  background-image: 
+    radial-gradient(circle at 20% 30%, #ffffff05 1px, transparent 1px),
+    radial-gradient(circle at 80% 70%, #ffffff08 1px, transparent 1px),
+    radial-gradient(circle at 50% 50%, #339b130a 2px, transparent 2px);
+  background-size: 100px 100px;
+  animation: starsFloat 60s linear infinite;
+}
+
+/* --- THE TRAVELING BORDER LINE --- */
+.rental-container::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    transparent, 
+    transparent, 
+    transparent, 
+    var(--term-green)
+  );
+  animation: rotateBorder 4s linear infinite;
+  z-index: 0;
+}
+
+/* Inner overlay to hide the center of the rotating gradient */
+.rental-container::after {
+  content: "";
+  position: absolute;
+  inset: 2px; /* Border thickness */
+  background: var(--term-card);
+  border-radius: 6px;
+  z-index: 1;
+}
+
+/* Ensure content stays above the border animation */
+.rental-container > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* --- FORM STYLING --- */
+.rental-container h2 {
+  text-align: center;
+  color: #fff;
+  font-family: 'Georgia', serif;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  letter-spacing: -0.5px;
+}
+
+.rental-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.rental-form input, 
+.rental-form textarea {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--term-border);
+  padding: 12px 15px;
+  color: #fff;
+  font-family: var(--font-mono);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.rental-form input:focus, 
+.rental-form textarea:focus {
+  outline: none;
+  border-color: var(--term-green);
+  box-shadow: 0 0 10px rgba(51, 155, 19, 0.2);
+  background: #080808;
+}
+
+/* Price Grid */
+.price-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+/* --- PROFESSIONAL UPLOAD BOX --- */
+.upload-box {
+  border: 2px dashed var(--term-border);
+  padding: 20px;
+  text-align: center;
+  border-radius: 4px;
+  background: rgba(51, 155, 19, 0.02);
+  transition: all 0.3s ease;
+}
+
+.upload-box:hover {
+  border-color: var(--term-green);
+}
+
+.upload-box label {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--term-green);
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.upload-box input[type="file"] {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  width: 100%;
+}
+
+/* --- TERMS CHECKBOX --- */
+.terms-box {
+  margin: 10px 0;
+}
+
+.terms-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.terms-checkbox input[type="checkbox"] {
+  accent-color: var(--term-green);
+  margin-top: 3px;
+  width: 16px;
+  height: 16px;
+}
+
+.terms-checkbox span {
+  transition: color 0.3s ease;
+}
+
+.terms-checkbox:hover span {
+  color: var(--text-main);
+}
+
+/* --- SUBMIT BUTTON --- */
+.rental-form button {
+  background: var(--term-green);
+  color: #000;
+  border: none;
+  padding: 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.rental-form button:hover:not(:disabled) {
+  background: #45c41c;
+  box-shadow: 0 0 20px rgba(51, 155, 19, 0.4);
+  transform: translateY(-2px);
+}
+
+.rental-form button:disabled {
+  background: var(--term-dim);
+  color: var(--text-muted);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* --- ANIMATIONS --- */
+@keyframes rotateBorder {
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes starsFloat {
+  from { background-position: 0 0; }
+  to { background-position: 1000px 1000px; }
+}
+
+.error-text {
+  color: var(--krayaa-bright-red);
+  background: rgba(211, 47, 47, 0.1);
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  text-align: center;
+}
+/* --- THE CONTAINER --- */
+.rental-container {
+  position: relative;
+  max-width: 600px;
+  margin: 60px auto;
+  background: var(--term-card);
+  padding: 40px;
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
+}
+
+/* Traveling Border Animation */
+.rental-container::before {
+  content: "";
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: conic-gradient(transparent, transparent, transparent, var(--term-green));
+  animation: rotateBorder 4s linear infinite;
+  z-index: 0;
+}
+
+.rental-container::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  background: var(--term-card);
+  border-radius: 10px;
+  z-index: 1;
+}
+
+/* --- BLINKING STARS BACKGROUND --- */
+.star-layer {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.star-layer::before, .star-layer::after {
+  content: "";
+  position: absolute;
+  width: 100%; height: 100%;
+  background-image: 
+    radial-gradient(1px 1px at 10% 20%, #fff, transparent),
+    radial-gradient(1px 1px at 30% 50%, #fff, transparent),
+    radial-gradient(2px 2px at 70% 30%, var(--term-green), transparent),
+    radial-gradient(1px 1px at 85% 85%, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 50% 10%, #fff, transparent);
+  background-size: 200px 200px;
+  animation: twinkle 4s ease-in-out infinite alternate;
+}
+
+.star-layer::after {
+  background-position: 100px 100px;
+  animation-delay: 2s;
+  opacity: 0.3;
+}
+
+/* --- SLEEK CIRCULAR IMAGE SELECTOR --- */
+.image-upload-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.circular-upload {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border: 2px solid var(--term-border);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(51, 155, 19, 0.05);
+}
+
+/* Plus Icon via Pseudo-elements */
+.circular-upload::before, 
+.circular-upload::after {
+  content: "";
+  position: absolute;
+  background-color: var(--term-green);
+  transition: all 0.3s ease;
+}
+
+/* Horizontal line */
+.circular-upload::before {
+  width: 20px; height: 2px;
+}
+/* Vertical line */
+.circular-upload::after {
+  width: 2px; height: 20px;
+}
+
+.circular-upload:hover {
+  border-color: var(--term-green);
+  box-shadow: 0 0 15px rgba(51, 155, 19, 0.3);
+  transform: scale(1.1) rotate(90deg);
+}
+
+.circular-upload input[type="file"] {
+  position: absolute;
+  width: 100%; height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.upload-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+}
+
+/* --- REST OF FORM --- */
+.rental-container > * { position: relative; z-index: 2; }
+
+.rental-form input, .rental-form textarea {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--term-border);
+  padding: 12px;
+  color: #fff;
+  border-radius: 4px;
+}
+
+.rental-form button {
+  background: var(--term-green);
+  color: #000;
+  padding: 14px;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.rental-form button:disabled {
+  opacity: 0.4;
+  filter: grayscale(1);
+  cursor: not-allowed;
+}
+
+/* --- ANIMATIONS --- */
+@keyframes rotateBorder { 100% { transform: rotate(360deg); } }
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.1); }
+}

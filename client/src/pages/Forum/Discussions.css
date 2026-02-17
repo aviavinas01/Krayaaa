@@ -1,0 +1,433 @@
+:root {
+  --krayaa-soft-green: #a8c0a0;
+  --krayaa-muted: #737477;
+  --krayaa-border: #333; /* Slightly darkened for better contrast */
+  --krayaa-black: #000000;
+  --krayaa-dark-card: #050505;
+  --krayaa-hover: #0a0a0a;
+  
+  --font-serif: "Times New Roman", serif;
+  --font-mono: "Courier New", monospace;
+  
+  --spacing-unit: 1rem;
+  --avatar-size: 28px;
+}
+
+/* =========================================
+   1. GLOBAL & LAYOUT
+   ========================================= */
+body {
+  background-color: var(--krayaa-black);
+  color: #ffffffea;
+  margin: 0;
+}
+
+/* FIX: Made this occupy full available width */
+.discussion-page-container {
+  width: 100%;       
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--primary-glow);
+}
+
+/* =========================================
+   2. SHARED COMPONENTS
+   ========================================= */
+.user-avatar {
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--krayaa-border);
+  background-color: var(--krayaa-dark-card);
+}
+
+.meta-text {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--krayaa-muted);
+}
+
+.username {
+  color: var(--krayaa-soft-green);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.username:hover {
+  text-decoration: underline;
+  color: var(--primary);
+}
+
+/* =========================================
+   3. HEADERS
+   ========================================= */
+.forum-header {
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--krayaa-border);
+  background-color: var(--krayaa-black);
+}
+
+.forum-header h1 {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  color: #ffffffea;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -0.02em;
+}
+.replies-container h2{
+  color:#ffffffea;
+}
+
+/* =========================================
+   4. THREAD LIST (Feed View)
+   ========================================= */
+.thread-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.thread-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 1rem 2rem; /* Adjusted padding for cleaner look */
+  border-bottom: 1px solid var(--krayaa-border);
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.thread-item:hover {
+  background-color: var(--krayaa-hover);
+  border-left: 2px solid var(--krayaa-green); /* Visual cue on hover */
+  padding-left: calc(2rem - 2px); /* Prevent layout shift */
+}
+
+.thread-main {
+  flex: 1;
+  padding-right: 20px; /* Space between title and stats */
+}
+
+.thread-title {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--krayaa-soft-green);
+  display: block;
+  margin-bottom: 0.4rem;
+  /* Limit title width for readability on ultra-wide screens */
+  max-width: 900px; 
+}
+
+.thread-item:hover .thread-title {
+  color: var(--krayaa-green);
+}
+
+.thread-stats {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  min-width: 80px;
+}
+
+.stat-pill {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border: 1px solid var(--krayaa-border);
+  color: var(--krayaa-muted);
+  white-space: nowrap;
+}
+
+/* =========================================
+   5. SINGLE DISCUSSION VIEW
+   ========================================= */
+.main-post-container {
+  padding: 2rem 2.5rem;
+  border-bottom: 1px solid var(--primary-glow);
+  background-color: var(--krayaa-black);
+}
+.main-post-container h1{
+  color: #ffffffea;
+}
+
+.main-post-header {
+  margin-bottom: 1.5rem;
+}
+
+.main-post-title {
+  font-family: var(--font-serif);
+  font-size: 2rem; /* Slightly larger for emphasis */
+  color:#ffffffea;
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+}
+
+.author-line {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* READABILITY FIX: Limit text width, but keep container full width */
+.main-post-content {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: #ffffffea;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  margin-bottom: 2rem;
+  max-width: 900px; /* Prevents text from being unreadable on wide screens */
+}
+/* Container for the whole line */
+.main-post-author {
+  display: flex;
+  align-items: center; /* vertically centers text with avatar */
+  gap: 6px;            /* Space between "Posted by" and the Avatar */
+  margin-bottom: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--krayaa-muted);
+}
+
+/* The "Posted by" text */
+.meta-label {
+  display: inline-block;
+  margin-top: 2px; /* Micro-adjustment to align text with avatar center */
+}
+
+/* The Link containing Avatar + Name */
+.user-link {
+  display: flex;
+  align-items: center; /* This aligns the Avatar with the Username */
+  gap: 8px;            /* Space between Avatar Ring and Username */
+  text-decoration: none;
+  color: inherit;
+}
+
+/* The Username text */
+.user-link strong {
+  color: var(--krayaa-soft-green);
+  font-weight: 600;
+}
+
+.user-link:hover strong {
+  color: var(--primary);
+  text-decoration: underline;
+}
+.main-post-content code {
+  background: var(--krayaa-dark-card);
+  border: 1px solid var(--primary-glow);
+  padding: 2px 4px;
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  color: var(--primary);
+}
+
+.post-actions {
+  display: flex;
+  gap: 1rem;
+  border-top: 1px solid var(--krayaa-border);
+  padding-top: 1rem;
+}
+
+/* =========================================
+   6. FORMS (Create & Reply)
+   ========================================= */
+.reply-form, .create-form {
+  padding: 1.5rem 2.5rem;
+  border-bottom: 1px solid var(--krayaa-border);
+  background-color: var(--krayaa-black);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.krayaa-input, 
+.krayaa-textarea {
+  background: var(--krayaa-dark-card);
+  border: 1px solid var(--primary-glow);
+  color: var(--krayaa-soft-green);
+  padding: 1rem;
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%; /* Ensure full width */
+  box-sizing: border-box; /* Prevent padding from breaking layout */
+  max-width: 1000px; /* Readable form width */
+}
+
+.krayaa-input:focus, 
+.krayaa-textarea:focus {
+  border-color: var(--primary);
+}
+
+.btn-primary {
+  align-self: flex-start;
+  background: var(--primary);
+  color: #000;
+  border: 1px solid var(--primary-glow);
+  padding: 8px 24px;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-primary:hover {
+  background: transparent;
+  color: var(--primary);
+}
+
+/* =========================================
+   7. REPLIES & NESTING
+   ========================================= */
+.replies-label {
+  padding: 1rem 2.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--krayaa-muted);
+  border-bottom: 1px solid var(--primary);
+  background: var(--krayaa-dark-card);
+}
+
+.reply-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.reply-card {
+  padding: 1rem 0; 
+  padding-right: 1.5rem;
+  position: relative;
+}
+
+/* Root Level Reply */
+.reply-root {
+  padding-left: 2.5rem;
+  border-bottom: 1px solid var(--krayaa-border);
+}
+
+/* Recursive Nesting Lines */
+.reply-node {
+  border-left: 2px solid var(--primary-glow); /* Thicker line for clarity */
+  margin-left: 1.5rem; 
+  padding-left: 1rem;
+  margin-top: 1rem;
+}
+
+.reply-node:hover {
+  border-left-color: var(--krayaa-muted); /* Highlight thread path on hover */
+}
+
+.reply-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 0.5rem;
+}
+
+.reply-content {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  color: var(--krayaa-soft-green);
+  line-height: 1.5;
+  margin: 0 0 0.8rem 0;
+  padding-left: calc(var(--avatar-size) + 10px); 
+  max-width: 850px; /* Readable text width */
+}
+ 
+
+.reply-footer {
+  padding-left: calc(var(--avatar-size) + 10px);
+  display: flex;
+  gap: 15px;
+}
+
+/* =========================================
+   8. BUTTONS & INTERACTIVE
+   ========================================= */
+.action-btn {
+  background: transparent;
+  border: none;
+  color: var(--krayaa-muted);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.action-btn:hover {
+  color: var(--primary);
+}
+
+/* =========================================
+   9. MOBILE RESPONSIVENESS
+   ========================================= */
+@media (max-width: 768px) {
+  
+  /* Reset container borders for mobile */
+  .discussion-page-container {
+    border-left: none;
+    border-right: none;
+    margin-top: 35px !important;
+  }
+
+  /* Reduce Padding everywhere */
+  .forum-header,
+  .thread-item,
+  .main-post-container,
+  .reply-form,
+  .replies-label,
+  .reply-root {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Thread Items */
+  .thread-item {
+    flex-direction: column; /* Stack stats below title on mobile */
+    gap: 10px;
+  }
+  
+  .thread-stats {
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  /* Replies */
+  .reply-node {
+    margin-left: 0.8rem; /* Tighter nesting on mobile */
+    padding-left: 0.8rem;
+    border-left-width: 1px;
+  }
+  .action-btn {
+    font-size: 0.6rem !important; /* Make text smaller (approx 10px) */
+    gap: 3px !important;          /* Bring icon and text closer */
+  }
+
+  /* 2. Fix the main "Post Reply" buttons */
+  .btn-primary {
+    padding: 6px 12px !important; /* Reduce the bulky padding */
+    font-size: 0.65rem !important; /* Smaller uppercase text */
+    height: auto !important;      /* Let height fit the content */
+    width: fit-content !important; /* Stop it from stretching full width */
+  }
+
+  /* 3. Tighter spacing in the footer where these buttons live */
+  .reply-footer {
+    gap: 10px !important; /* Reduce gap between "Reply" and "Hide" */
+    padding-left: 0 !important; /* Align with left edge on small screens */
+    margin-top: 5px !important;
+  }
+}

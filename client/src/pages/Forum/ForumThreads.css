@@ -1,0 +1,254 @@
+:root {
+  --krayaa-soft-green: #a8c0a0;
+  --krayaa-muted: #555;
+  --krayaa-black: #000000;
+  --krayaa-dark-card: #0a0a0a;
+  --krayaa-border: #1a1a1a;
+  --font-serif:   serif;
+  --font-mono:  monospace;
+}
+.forum-page {
+  width: 100%;
+  min-height: 100vh; /* Ensures it fills the screen height */
+  background-color: #000000; /* Very light neutral grey */
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+.forum-container {
+  width: 100%;
+  padding: 0; /* Zero padding to hit the edges */
+  box-sizing: border-box;
+}
+.forum-header {
+  padding: 2rem 2.5rem; /* Breathing room for text */
+  background-color: #000000;
+  border-bottom: 1px solid var(--primary-glow) !important; /* Subtle separator line */
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.forum-header h1 {
+  font-size: 1.75rem;
+  color: var(--primary); /* Dark charcoal */
+  margin: 0 0 0.5rem 0;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+.forum-header p {
+  color: #9a9a9a; /* Neutral grey text */
+  margin: 0;
+  font-size: 0.95rem;
+}
+/* --- Professional Start Discussion Button --- */
+.new-discussion-btn {
+  background: transparent;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  padding: 6px 16px;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.new-discussion-btn:hover {
+  background: var(--primary-glow);
+  border: 1px var(--primary-glow);
+  color: #e9e6e6;
+}
+
+/* --- Congested Form Style --- */
+.create-discussion-form {
+  background: #050505;
+  border-bottom: 1px solid var(--primary-glow);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.create-discussion-form input,
+.create-discussion-form textarea {
+  background: #000;
+  border: 1px solid var(--primary-glow);
+  color: var(--krayaa-soft-green);
+  padding: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.create-discussion-form button {
+  align-self: flex-end;
+  background: var(--primary);
+  border: none;
+  padding: 8px 20px;
+  font-family: var(--font-mono);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* --- The Discussion List (High Density) --- */
+.discussion-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.discussion-card {
+  border-bottom: 1px solid var(--primary-glow);
+  padding: 12px 10px; /* Narrow vertical padding */
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 1fr auto; /* Title on left, Date on right */
+  align-items: center;
+  gap: 10px;
+  transition: background 0.1s;
+}
+
+.discussion-card:hover {
+  background: #080808;
+}
+
+.discussion-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color:  #ffffffea;
+  margin: 0 0 6px 0;
+  grid-column: 1 / 2;
+}
+
+/* --- Metadata Row (Author & Avatar) --- */
+.discussion-author-line {
+  grid-column: 1 / 2;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--krayaa-muted);
+}
+
+.author-name {
+  color: var(--krayaa-green);
+  font-weight: normal;
+}
+
+/* --- Date Placement --- */
+.discussion-meta {
+  grid-column: 2 / 3;
+  grid-row: 1 / 3; /* Centers date vertically against title and author */
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--krayaa-muted);
+  text-align: right;
+  text-transform: uppercase;
+}
+
+/* --- Empty State --- */
+.discussion-list p {
+  padding: 40px;
+  text-align: center;
+  color: var(--krayaa-muted);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+/* =========================================
+   RESPONSIVE DESIGN (Mobile & Tablet)
+   ========================================= */
+
+@media screen and (max-width: 768px) {
+
+  /* 1. Navbar Adjustment
+     Adds padding to the top so content doesn't hide behind your fixed Navbar.
+     Adjust '80px' if your navbar is taller/shorter. 
+  */
+  .forum-page {
+    padding-top: 85px; 
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  /* 2. Header Adjustment 
+     Make the header flex so we can align the button and title nicely.
+  */
+  .forum-header {
+    display: flex;
+    flex-direction: column; /* Stack Title and Button */
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem 1rem; /* Reduce padding */
+  }
+
+  .forum-header h1 {
+    font-size: 1.5rem; /* Slightly smaller title */
+    line-height: 1.2;
+  }
+
+  /* Make the "Start Discussion" button full width for easier tapping */
+  .new-discussion-btn {
+    width: 100%; 
+    text-align: center;
+    padding: 10px;
+    margin-top: 5px;
+  }
+
+  /* 3. Form Adjustments */
+  .create-discussion-form {
+    padding: 15px;
+    margin: 0 -10px; /* Pull negative margin to fill screen width */
+    border-radius: 0;
+  }
+
+  /* 4. Discussion Card Grid Reflow (CRITICAL) 
+     On Desktop: Title (Left) | Date (Right)
+     On Mobile:  
+       Row 1: Title (Full Width)
+       Row 2: Author (Left) | Date (Right)
+  */
+  .discussion-card {
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto; /* Two distinct rows */
+    gap: 8px;
+    padding: 15px 10px;
+  }
+
+  /* Title takes the entire top row */
+  .discussion-card h3 {
+    grid-column: 1 / -1; 
+    font-size: 1rem;
+    line-height: 1.4;
+    margin-bottom: 4px;
+  }
+
+  /* Author stays on the left of the second row */
+  .discussion-author-line {
+    grid-column: 1 / 2;
+    grid-row: 2;
+  }
+
+  /* Date moves to the right of the second row */
+  .discussion-meta {
+    grid-column: 2 / 3;
+    grid-row: 2;
+    align-self: center;
+    font-size: 0.7rem;
+    white-space: nowrap; /* Prevents date from breaking lines */
+  }
+}
+
+/* Small Mobile Tweaks (iPhone SE, etc.) */
+@media screen and (max-width: 380px) {
+  .forum-header h1 {
+    font-size: 1.35rem;
+  }
+  
+  .discussion-card {
+    padding: 12px 8px;
+  }
+}

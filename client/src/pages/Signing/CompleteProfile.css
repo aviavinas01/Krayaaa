@@ -1,0 +1,127 @@
+/* CompleteProfile.css */
+
+.profile-setup-page {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.profile-setup-container {
+  width: 100%;
+  max-width: 500px;
+  padding: 3rem 2rem;
+  box-sizing: border-box;
+  animation: setupFadeIn 0.8s ease;
+}
+
+/* Header Styling */
+.setup-header {
+  border-bottom: 1px solid #1a1a1a;
+  padding-bottom: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.setup-header h1 {
+  font-family: 'Georgia', serif;
+  color: #339b13;
+  font-size: 1.8rem;
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.setup-header p {
+  font-family: 'Courier New', monospace;
+  color: #737477;
+  font-size: 0.85rem;
+  margin: 0.5rem 0 0 0;
+}
+
+/* Form Layout */
+.setup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+.setup-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.setup-label {
+  font-family: 'Courier New', monospace;
+  font-size: 0.75rem;
+  color: #339b13;
+  font-weight: bold;
+  margin-bottom: 0.8rem;
+  letter-spacing: 1px;
+}
+
+.setup-input {
+  background-color: #000;
+  border: 1px solid #1a1a1a;
+  color: #a8c0a0;
+  padding: 12px 16px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.setup-input:focus {
+  outline: none;
+  border-color: #339b13;
+  background-color: #050505;
+}
+
+.input-hint {
+  font-family: 'Courier New', monospace;
+  color: #444;
+  font-size: 0.65rem;
+  margin-top: 5px;
+}
+
+/* Submit Button */
+.setup-submit-btn {
+  background-color: #339b13;
+  color: #000000;
+  border: none;
+  padding: 1rem;
+  font-family: 'Courier New', monospace;
+  font-weight: 900;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: opacity 0.2s ease;
+}
+
+.setup-submit-btn:hover {
+  opacity: 0.9;
+}
+
+/* Entry Animation */
+@keyframes setupFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile Fixes */
+@media (max-width: 480px) {
+  .profile-setup-container {
+    padding: 2rem 1.5rem;
+  }
+}

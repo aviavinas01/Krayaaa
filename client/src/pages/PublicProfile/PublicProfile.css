@@ -1,0 +1,247 @@
+:root {
+  --term-dim: #1a4d09;
+  --term-bg: #000000;
+  --term-card: #050505;
+  --term-border: #1f1f1f;
+  --text-muted: #737477;
+  --text-main: #a8c0a0;
+  --font-mono: 'Courier New', monospace;
+  --krayaa-red: #d32f2f;
+  --krayaa-bright-red: #ff1744;
+}
+
+/* Base reset to prevent side-scrolling on mobile */
+body, html {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 10px;
+}
+
+.public-profile {
+  /* CHANGED: Use width: 95% so it fits on mobile, but cap at 900px for desktop */
+  width: 95%; 
+  max-width: 900px;
+  margin: 60px auto 10px auto;
+  background: var(--term-card);
+  border: 1px solid var(--primary-dim);
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  padding: 0;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+}
+
+/* --- HEADER --- */
+.profile-header {
+  display: flex;
+  align-items: center;
+  
+  /* CHANGED: Fluid padding & gap. 
+     On Desktop: it hits the max (40px padding, 25px gap).
+     On Mobile: it shrinks (20px padding, 15px gap). */
+  padding: clamp(20px, 5vw, 40px);
+  gap: clamp(15px, 3vw, 25px);
+
+  background: linear-gradient(to bottom, #0a0a0a, transparent);
+  border-bottom: 1px solid var(--primary-dim);
+  
+  /* Forces layout to stay side-by-side (Row) even on small screens */
+  flex-direction: row; 
+  flex-wrap: nowrap;
+}
+
+/* Safety: Ensures the avatar doesn't get squashed */
+.profile-header > :first-child {
+  flex-shrink: 0;
+}
+
+.profile-header-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0; /* Critical: allows text truncation to work in flexbox */
+}
+
+.username-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap; /* Allows icons to wrap if screen is TINY */
+}
+
+.username-row h2 {
+  color: #fff;
+  font-family: 'Georgia', serif;
+  
+  /* CHANGED: Fluid Font Size. 
+     Desktop = 2.2rem. Mobile = scales down to 1.5rem. */
+  font-size: clamp(1.5rem, 5vw, 2.2rem);
+  
+  margin: 0;
+  letter-spacing: -1px;
+  white-space: nowrap;
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.social-icons a {
+  color: var(--text-muted);
+  transition: color 0.2s ease;
+  line-height: 0;
+}
+
+.social-icons a:hover {
+  color: var(--primary-glow);
+}
+
+.profile-header-info .role {
+  margin: 5px 0 2px 0;
+  font-size: 0.85rem;
+  color: var(--primary);
+  text-transform: uppercase;
+}
+
+.profile-header-info .joined {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* --- BIO SECTION --- */
+.profile-bio {
+  /* Fluid padding */
+  padding: 20px clamp(20px, 5vw, 40px);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  border-bottom: 1px solid var(--primary-dim);
+  color: #ccc;
+}
+
+/* --- STATS ROW --- */
+.profile-stats {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  background: #080808;
+  border-bottom: 1px solid var(--primary-dim);
+}
+
+.profile-stats span {
+  /* Scales font down slightly on mobile to fit all 5 items */
+  font-size: clamp(0.6rem, 2vw, 0.75rem);
+  color: var(--primary-glow);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* --- ACTIVITY GRID --- */
+.profile-activity {
+  display: grid;
+  
+  /* FORCE 2 Columns always (Desktop & Mobile) */
+  grid-template-columns: repeat(2, 1fr);
+  
+  gap: 1px;
+  background: var(--primary-glow);
+}
+
+.profile-activity section {
+  background: var(--term-card);
+  
+  /* Reduced padding on mobile to fit content */
+  padding: clamp(15px, 3vw, 30px);
+  
+  min-height: 200px;
+  min-width: 0; /* Prevents overflow */
+}
+
+.profile-activity h3 {
+  font-size: 0.75rem;
+  color: var(--primary-dim);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  border-left: 2px solid var(--primary-dim);
+  padding-left: 10px;
+}
+
+.profile-activity section a {
+  display: block;
+  color: #d6d3d3;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: bold;
+  padding: 8px 0;
+  border-bottom: 1px solid #111;
+  transition: all 0.2s ease;
+  
+  /* Ensures long titles don't stretch the screen */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.profile-activity section a:hover {
+  color: var(--term-green);
+  padding-left: 5px;
+  background: rgba(51, 155, 19, 0.05);
+}
+
+/* --- REPORT BUTTON --- */
+.profile-actions {
+  display: flex;
+  justify-content: center;
+  width: 95%; /* Matches profile width */
+  max-width: 900px;
+  margin: 20px auto; 
+  padding-bottom: 40px;
+}
+
+.report-btn {
+  background: transparent;
+  border: 1px solid var(--text-muted);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 6px 15px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+  letter-spacing: 1px;
+}
+
+.report-btn:hover {
+  border-color: var(--krayaa-red);
+  color: var(--krayaa-bright-red);
+  background: rgba(211, 47, 47, 0.05);
+}
+
+/* --- MODAL & OVERLAY --- */
+.report-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.report-modal {
+  background: #000;
+  border: 1px solid var(--krayaa-bright-red);
+  width: 90%; /* Responsive width for modal */
+  max-width: 450px;
+  box-shadow: 0 0 30px rgba(255, 23, 68, 0.2);
+}
+
+/* NOTE: Removed the @media query that was stacking columns. 
+   The clamp() and width percentages above handle the responsiveness now. */

@@ -1,0 +1,379 @@
+:root {
+  /* --- Theme Variables --- */
+  --bg-dark: #0a0a0a;
+  --bg-card: #161616;
+  --bg-card-hover: #1c1c1c;
+  
+  --primary: #adff2f;        /* Neon Lime */
+  --primary-dim: #8bce22;    /* Darker Lime */
+  --primary-glow: rgba(173, 255, 47, 0.4);
+  
+  --text-main: #ffffff;
+  --text-muted: #888888;
+  --danger: #ff4d4d;
+  --success: #00e676;
+  --warning: #ffb700;
+
+  --radius: 12px;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* --- Global Reset & Base --- */
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+.handshake-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: clamp(1rem, 5vw, 2rem); /* Fluid padding */
+  min-height: 100vh;
+  margin-top: 20px;
+}
+
+/* --- Header & Typography --- */
+.page-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2.5rem;
+  gap: 1rem;
+  text-align: center;
+}
+
+h1 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 800;
+  margin: 0;
+  background: linear-gradient(to right, #fff, var(--text-muted));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -1px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--bg-card-hover);
+  padding-bottom: 0.5rem;
+}
+
+/* --- Tab Switcher (Pill Design) --- */
+.tab-switcher {
+  background: var(--bg-card);
+  padding: 5px;
+  border-radius: 50px;
+  display: inline-flex;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.tab-switcher button {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  padding: 0.8rem 1.5rem;
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  font-weight: 600;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.tab-switcher button.active-tab {
+  background: var(--primary);
+  color: #000;
+  box-shadow: 0 2px 10px var(--primary-glow);
+  transform: scale(1.05);
+}
+
+.tab-switcher button:hover:not(.active-tab) {
+  color: var(--text-main);
+}
+
+/* --- Handshake Card (The Hero) --- */
+.handshake-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius);
+  padding: clamp(1.2rem, 3vw, 2rem);
+  margin-bottom: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition);
+  animation: slideUp 0.5s ease-out forwards;
+}
+
+.handshake-card:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+/* Status Badge */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.2rem;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  padding-bottom: 0.8rem;
+}
+
+.status-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+
+/* Status Colors */
+.status-badge.pending_renter_acceptance { background: rgba(255, 183, 0, 0.15); color: var(--warning); border: 1px solid rgba(255, 183, 0, 0.3); }
+.status-badge.active { background: rgba(0, 230, 118, 0.15); color: var(--success); border: 1px solid rgba(0, 230, 118, 0.3); box-shadow: 0 0 10px rgba(0,230,118,0.2); }
+.status-badge.completed { background: rgba(255, 255, 255, 0.1); color: var(--text-muted); }
+.status-badge.pending_owner_confirmation { background: rgba(255, 77, 77, 0.15); color: var(--danger); animation: pulseRed 2s infinite; }
+
+/* Info Section */
+.card-info h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.4rem;
+  color: var(--text-main);
+}
+
+.card-info p {
+  margin: 0.3rem 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* --- Trust Indicators --- */
+.trust-indicators {
+  display: flex;
+  flex-wrap: wrap; /* Wraps gracefully on very small screens */
+  gap: 1rem;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: rgba(0,0,0,0.2);
+  border-radius: 8px;
+}
+
+.trust-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid transparent;
+  flex: 1; /* Equal width on desktop */
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.trust-badge.verified {
+  background: rgba(173, 255, 47, 0.1);
+  color: var(--primary);
+  border-color: rgba(173, 255, 47, 0.3);
+}
+
+.trust-badge.pending {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-muted);
+}
+
+/* --- Condition & Proof --- */
+.condition-section h4 {
+  margin-bottom: 0.5rem;
+  color: var(--text-main);
+}
+
+.notes-box {
+  background: #111;
+  padding: 1rem;
+  border-left: 3px solid var(--primary);
+  font-style: italic;
+  color: #ddd;
+  margin-bottom: 1rem;
+  border-radius: 0 8px 8px 0;
+}
+
+.proof-gallery {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.proof-gallery img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #333;
+  transition: transform 0.2s;
+  cursor: zoom-in;
+}
+
+.proof-gallery img:hover {
+  transform: scale(1.1);
+  border-color: var(--primary);
+}
+
+/* --- Action Buttons (Big & Clickable) --- */
+.action-area {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  text-align: center;
+}
+
+.legal-text {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+button.accept-btn, button.return-btn, button.confirm-btn, button.review-btn, .submit-btn {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--transition);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.accept-btn { background: var(--primary); color: #000; box-shadow: 0 4px 15px var(--primary-glow); }
+.accept-btn:hover { background: var(--primary-dim); transform: translateY(-2px); }
+
+.return-btn { background: #3498db; color: white; }
+.return-btn:hover { background: #2980b9; }
+
+.confirm-btn { background: var(--success); color: #000; }
+.confirm-btn:hover { opacity: 0.9; }
+
+.review-btn { background: #9b59b6; color: white; }
+.review-btn:hover { background: #8e44ad; }
+
+/* Create Form Specifics */
+.create-handshake {
+  background: var(--bg-card);
+  padding: 2rem;
+  border-radius: var(--radius);
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+input, select, textarea {
+  width: 100%;
+  background: #000;
+  border: 1px solid #333;
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+  box-sizing: border-box; /* Fixes padding overflow */
+  transition: border 0.3s;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(173, 255, 47, 0.1);
+}
+
+/* --- Modal --- */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  padding: 20px;
+}
+
+.modal-content {
+  background: #1a1a1a;
+  padding: 2rem;
+  border-radius: var(--radius);
+  width: 100%;
+  max-width: 450px;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+  animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 1.5rem;
+}
+
+.cancel-btn {
+  background: transparent;
+  border: 1px solid #444;
+  color: #888;
+}
+.cancel-btn:hover { border-color: #666; color: white; }
+
+/* --- Animations --- */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pulseRed {
+  0% { box-shadow: 0 0 0 0 rgba(255, 77, 77, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(255, 77, 77, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 77, 77, 0); }
+}
+
+/* --- Mobile Specific Tweaks --- */
+/* The layout above is inherently fluid, but these enforce mobile perfection */
+@media (max-width: 600px) {
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .trust-indicators {
+    flex-direction: column; /* Stack badges on very small screens */
+  }
+
+  .modal-content {
+    padding: 1.5rem;
+  }
+}

@@ -1,0 +1,148 @@
+/* =========================================
+   FORM CONTAINER
+   ========================================= */
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem; /* Consistent spacing between all inputs */
+  max-width: 600px;
+  margin: 3rem auto; /* Center on page */
+  padding: 2.5rem;
+  background-color: #0a0a0a; /* Dark background */
+  border: 1px solid #222;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Deep shadow for depth */
+  font-family: 'Inter', sans-serif;
+  color: #e0e0e0;
+}
+
+/* =========================================
+   TYPOGRAPHY
+   ========================================= */
+.edit-form h2 {
+  font-family: 'Space Mono', monospace;
+  font-size: 1.8rem;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #333;
+  letter-spacing: -1px;
+}
+
+/* =========================================
+   INPUTS & TEXTAREAS
+   ========================================= */
+.edit-form input,
+.edit-form textarea {
+  background-color: #111;
+  border: 1px solid #333;
+  color: #fff;
+  padding: 1rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s ease;
+  width: 100%; /* Full width for mobile friendliness */
+  box-sizing: border-box; /* Ensures padding doesn't break width */
+}
+
+/* Placeholder Styling */
+.edit-form input::placeholder,
+.edit-form textarea::placeholder {
+  color: #666;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.9rem;
+}
+
+/* Focus State (Glow Effect) */
+.edit-form input:focus,
+.edit-form textarea:focus {
+  outline: none;
+  border-color: var(--primary); /* Uses your theme color */
+  box-shadow: 0 0 10px var(--primary-glow);
+  background-color: #161616;
+}
+
+/* Specific styling for Textareas */
+.edit-form textarea {
+  min-height: 120px;
+  resize: vertical; /* User can resize vertically only */
+  line-height: 1.6;
+}
+
+/* =========================================
+   SUBMIT BUTTON
+   ========================================= */
+.edit-form button[type="submit"] {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: var(--primary);
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.edit-form button[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px var(--primary-glow);
+}
+
+.edit-form button[type="submit"]:active {
+  transform: translateY(0);
+}
+
+/* =========================================
+   LOADING STATE
+   ========================================= */
+.loading-text {
+  color: #888;
+  text-align: center;
+  margin-top: 4rem;
+  font-family: 'Space Mono', monospace;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.5; }
+  50% { opacity: 1; }
+  100% { opacity: 0.5; }
+}
+
+@keyframes pulse {
+  0% { opacity: 0.5; }
+  50% { opacity: 1; }
+  100% { opacity: 0.5; }
+}
+
+/* =========================================
+   MOBILE RESPONSIVENESS
+   ========================================= */
+@media (max-width: 600px) {
+  .edit-form {
+    width: 90%; /* Take up most of the screen width */
+    margin: 2rem auto;
+    padding: 1.5rem; /* Less padding on small screens */
+  }
+
+  .edit-form h2 {
+    font-size: 1.5rem;
+  }
+}
+.price-row {
+  display: flex;
+  gap: 1rem;
+}
+
+/* On mobile, stack them again */
+@media (max-width: 600px) {
+  .price-row {
+    flex-direction: column;
+  }
+}

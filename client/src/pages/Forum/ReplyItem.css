@@ -1,0 +1,139 @@
+:root {
+  --krayaa-soft-green: #a8c0a0;
+  --krayaa-muted: #737477;
+  --krayaa-border: #515e53;
+  --font-mono: monospace;
+  --font-serif: serif;
+}
+
+.reply-node-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* The vertical thread line */
+.reply-thread-line {
+  position: absolute;
+  left: -12px; /* Positioned to the left of the content */
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background-color:var(--primary-glow); /* Subtle guide line */
+}
+
+/* Hide line if it's the very last child to avoid dangling lines (optional) */
+.reply-node-container:last-child > .reply-thread-line {
+   height: 40px;  /*Adjust based on header height if you want perfect tree structure */
+}
+
+.reply-item-content {
+  padding: 0.8rem 0; /* Vertical spacing between comments */
+  /* No borders here, purely text */
+}
+
+/* --- HEADER --- */
+.reply-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.4rem;
+}
+
+.user-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.user-link .username {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #9fa99f;
+}
+
+.user-link:hover .username {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+/* --- TEXT CONTENT --- */
+.reply-text {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  color: #ffffffea;
+  line-height: 1.5;
+  margin-bottom: 0.6rem;
+  white-space: pre-wrap;
+  padding-left: 10px;
+}
+
+/* --- FOOTER --- */
+.reply-footer {
+  display: flex;
+  justify-content: space-between; /* Pushes date to the right */
+  align-items: center;
+}
+
+.reply-actions-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.action-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--krayaa-muted);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.2s;
+}
+
+.action-btn:hover {
+  color: var(--primary-glow);
+}
+
+.upvote-btn.active {
+  color: var(--primary);
+  font-weight: bold;
+}
+.upvote-btn:hover {
+  color: var(--primary-glow);
+
+}
+
+.collapse-btn {
+  color: var(--krayaa-soft-green); /* Slightly distinctive color for collapse */
+}
+.collapse-btn:hover {
+   color: var(--primary );
+}
+
+
+.reply-date {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: #444; 
+  text-transform: uppercase;
+}
+
+/* --- FORM & CHILDREN --- */
+.nested-reply-form-wrapper {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding-left: 10px;
+  border-left: 2px solid var(--primary);
+}
+
+.reply-children-list {
+  display: flex;
+  flex-direction: column;
+}

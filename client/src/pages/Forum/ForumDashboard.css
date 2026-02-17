@@ -1,0 +1,268 @@
+:root {
+  --krayaa-soft-green: #bcd0bc;
+  --krayaa-muted: #555;
+  --krayaa-dark-card: #0a0a0a;
+  --krayaa-border: #1a1a1a;
+  --font-serif: 'Georgia', serif;
+  --font-mono: 'Courier New', monospace;
+}
+
+/* --- Compact Header --- */
+
+.sidebar-container{
+  background:#050505;
+}
+.sidebar-header {
+  padding-bottom: 4px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid var(--primary-glow);
+  
+}
+
+.sidebar-title {
+  font-family: var(--font-mono);
+  font-size: 0.75rem; /* Smaller font */
+  font-weight: 900;
+  letter-spacing: 1px;
+  color: #ffffffea;
+  margin: 0;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+/* --- The Widget Container (Sleek Box) --- */
+.sidebar-widget {
+  background: var(--krayaa-dark-card);
+  border: 1px solid var(--primary);
+  margin-bottom: 10px; /* Tight gap between widgets */
+  overflow: hidden;
+  border-radius: 2px; /* Sharper corners */
+}
+
+/* --- Widget Header (Strip) --- */
+.widget-header {
+  background: #050505;
+  padding: 6px 10px; /* Very tight vertical padding */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--primary);
+}
+
+.widget-icon {
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
+.widget-header h3 {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--krayaa-muted);
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+/* --- Widget Body (Content Area) --- */
+.widget-body {
+  padding: 0; /* Remove padding so items touch edges */
+}
+
+/* --- Targeting Internal Items (HotTopics/Replies) --- */
+/* This targets the div wrappers inside your imported components */
+.widget-body > div, 
+.dashboard-item,
+.widget-body section > div { 
+  padding: 6px 10px; /* High density list items */
+  border-bottom: 1px solid #111; /* Very subtle divider */
+  display: flex;
+  flex-direction: column;
+  gap: 2px; /* Minimal gap between title and meta info */
+  transition: background 0.2s;
+}
+
+/* Hover effect for list items */
+.widget-body > div:hover,
+.dashboard-item:hover {
+  background-color: #0e0e0e;
+}
+
+/* Last item needs no border */
+.widget-body > div:last-child,
+.dashboard-item:last-child {
+  border-bottom: none;
+}
+
+/* --- Typography Updates for Density --- */
+/* Titles/Usernames */
+.widget-body strong,
+.dashboard-item strong {
+  font-family: var(--font-serif);
+  font-size: 0.85rem;
+  color: var(--krayaa-soft-green);
+  line-height: 1.1;
+  white-space: nowrap; /* Prevent wrapping to keep it thin */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Metadata (replies count, upvotes) */
+.widget-body span,
+.upvotes {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--krayaa-muted);
+}
+
+/* Snippets (Recent Replies) */
+.dashboard-snippet {
+  font-size: 0.7rem;
+  color: #444;
+  line-height: 1.2;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Limit to 2 lines max */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Empty State Text */
+.widget-body p {
+  padding: 10px;
+  margin: 0;
+  font-size: 0.7rem;
+  color: var(--krayaa-muted);
+  font-style: italic;
+  text-align: center;
+}
+/* --- DESKTOP DEFAULT STYLES --- */
+.mobile-only {
+    display: none; /* Hide ticker on desktop */
+}
+
+/* --- MOBILE & RESPONSIVE STYLES --- */
+@media (max-width: 768px) {
+
+    /* 1. HIDE the Standard Sidebar on Mobile */
+    .desktop-only {
+        display: none !important;
+    }
+
+    /* 2. SHOW the Ticker Container */
+    .mobile-only {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        background: #000;
+        border-bottom: 1px solid #333;
+        margin-bottom: 0px !important;
+        overflow: hidden; /* Cut off scrolling text */
+    }
+
+    /* 3. The Strip Design */
+    .ticker-strip {
+        display: flex;
+        align-items: center;
+        height: 35px; /* Compact height */
+        white-space: nowrap; /* Force text to one line */
+        position: relative;
+        font-family: 'Courier New', monospace;
+        font-size: 0.8rem;
+        overflow: hidden;
+    }
+
+    /* Colors for the 3 strips to distinguish them */
+    .green-strip { background: rgba(51, 155, 19, 0.1); border-bottom: 1px solid #111; }
+    .dark-strip  { background: #050505; border-bottom: 1px solid #111; }
+    .dim-strip   { background: rgba(255, 255, 255, 0.05); }
+
+    .strip-label {
+        background: #000; /* Label stays fixed */
+        color: var(--primary);
+        font-weight: bold;
+        padding: 0 10px;
+        z-index: 2; /* Sit on top of scrolling text */
+        height: 100%;
+        display: flex;
+        align-items: center;
+        box-shadow: 5px 0 10px #000;
+    }
+
+    /* 4. The Scrolling Animation Container */
+    .marquee-content {
+        display: flex;
+        align-items: center;
+          /* Space between items */
+        padding-left: 100%; /* Start off-screen */
+        animation: scroll-left 30s linear infinite;
+    }
+
+    /* Option: Make the middle row scroll the other way for visual flair */
+    .reverse-scroll {
+        animation: scroll-right 10s linear infinite;
+    }
+    /* 2. CRITICAL FIX: Target the <section> inside HotTopics.js */
+    .marquee-content section {
+        display: flex !important;       /* Force the section to be a row, not a column */
+        flex-direction: row !important;
+        align-items: center;
+        gap: 40px;                      /* Space between different Topics */
+    }
+
+    /* 3. Target the specific item <div>s (e.g. "Title + Replies") */
+    .marquee-content section > div {
+        display: flex !important;       /* Ensure Title and Reply Count sit side-by-side */
+        align-items: center;
+        gap: 10px;                      /* Space between the Title and the '10 replies' text */
+        white-space: nowrap;            /* Prevent text wrapping */
+    }
+    /* 5. Force the inner Widgets (HotTopics etc) to be inline */
+    /* This overrides the vertical list styles they probably have */
+    .marquee-content div, 
+    .marquee-content ul, 
+    .marquee-content li {
+        display: flex !important;
+        flex-direction: row !important;
+        list-style: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        gap: 30px;
+    }
+
+    .marquee-content a {
+        color: #ccc;
+        text-decoration: none;
+    }
+    /* 3. Target the specific item <div>s (e.g. "Title + Replies") */
+.marquee-content section > div {
+    display: flex !important;       /* Ensure Title and Reply Count sit side-by-side */
+    align-items: center;
+    gap: 10px;                      /* Space between the Title and the '10 replies' text */
+    white-space: nowrap;            /* Prevent text wrapping */
+}
+
+/* 4. Optional: Styling for the text inside the ticker to look cleaner */
+.marquee-content section > div strong {
+    color: #e0e0e0;                 /* Bright text for Title */
+    font-weight: 600;
+}
+
+.marquee-content section > div span {
+    color: var(--primary);                 /* Green accent for "10 replies" */
+    font-size: 0.85em;
+    background: rgba(51, 155, 19, 0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+}
+
+/* --- ANIMATIONS --- */
+@keyframes scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); } /* Move Left */
+}
+
+@keyframes scroll-right {
+    0% { transform: translateX(-100%); } /* Start Left */
+    100% { transform: translateX(0); } /* Move Right */
+}

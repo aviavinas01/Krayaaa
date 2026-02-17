@@ -1,0 +1,115 @@
+/* ForumSidebar.css */
+
+:root {
+  --krayaa-green: #2fac04;
+  --krayaa-soft-green: #a8c0a0;
+  --krayaa-muted: #555;
+  --krayaa-dark-card: #0a0a0a;
+  --krayaa-border: #1a1a1a;
+  --font-serif: 'Georgia', serif;
+  --font-mono: 'Courier New', monospace;
+}
+
+/* --- Shared Section Container --- */
+section {
+  background-color: var(--krayaa-dark-card);
+  border: 1px solid var(--krayaa-border);
+  padding: 25px;
+  margin-bottom: 30px; /* Space between sidebar widgets */
+  border-radius: 4px; /* Slight rounding, mostly sharp */
+}
+
+/* --- Section Headers --- */
+section h3 {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--krayaa-muted);
+  border-bottom: 1px solid var(--krayaa-border);
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+  margin-top: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* --- Empty State --- */
+section p {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--krayaa-muted);
+  font-style: italic;
+}
+
+/* --- List Items (Shared) --- */
+.dashboard-item,
+section > div { 
+  /* "section > div" targets the wrapper in Hot Topics that lacks a class */
+  display: flex;
+  flex-direction: column;
+  padding: 12px 0;
+  border-bottom: 1px dashed #222;
+  transition: transform 0.2s ease;
+}
+
+.dashboard-item:last-child,
+section > div:last-child {
+  border-bottom: none;
+}
+
+.dashboard-item:hover,
+section > div:hover {
+  transform: translateX(5px); /* Subtle slide interaction */
+}
+
+/* --- Text Styling --- */
+/* Usernames and Topic Titles */
+.dashboard-item strong,
+section > div strong {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  color: var(--krayaa-soft-green);
+  margin-bottom: 5px;
+  line-height: 1.3;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.dashboard-item strong:hover,
+section > div strong:hover {
+  color: var(--krayaa-green);
+}
+
+/* --- Specific: Hot Topics Metadata --- */
+section > div span {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--krayaa-green);
+}
+
+/* --- Specific: Recent Replies Snippet --- */
+.dashboard-snippet {
+  font-family: var(--font-serif);
+  font-size: 0.85rem;
+  color: #666; /* Muted text for content */
+  margin: 0;
+  line-height: 1.4;
+  font-style: italic;
+}
+
+/* --- Specific: Top Replies Upvotes --- */
+.upvotes {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--krayaa-green);
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(47, 172, 4, 0.05); /* Very faint green background */
+  padding: 2px 8px;
+  width: fit-content;
+  border-radius: 4px;
+}

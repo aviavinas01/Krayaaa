@@ -1,0 +1,85 @@
+/* Container for the form to center it or fit the dashboard */
+.edit-form {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.edit-form h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: #1a202c;
+  font-weight: 700;
+  text-align: left;
+}
+
+/* Neutral Input & Textarea Styling */
+.edit-form input,
+.edit-form textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #e2e8f0; /* Soft grey border */
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: #2d3748;
+  background-color: #f8fafc; /* Very subtle grey background */
+  transition: all 0.2s ease;
+  outline: none;
+  box-sizing: border-box; /* Ensures padding doesn't break width */
+}
+
+/* Highlight effect on focus using your brand green */
+.edit-form input:focus,
+.edit-form textarea:focus {
+  border-color: var(--primary);
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(15, 134, 17, 0.1);
+}
+
+.edit-form textarea {
+  min-height: 120px;
+  resize: vertical; /* Allows user to grow height only */
+}
+
+/* Modern Update Button */
+.edit-form button {
+  margin-top: 1rem;
+  padding: 0.8rem;
+  background-color: var(--primary-glow);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.1s active, background-color 0.2s ease;
+}
+
+.edit-form button:hover {
+  background-color: var(--primary-dim);
+  box-shadow: 0 4px 12px rgba(15, 134, 17, 0.2);
+}
+
+.edit-form button:active {
+  transform: scale(0.98);
+}
+
+/* Mobile Friendly Adjustments */
+@media (max-width: 768px) {
+  .edit-form {
+    margin: 1rem;
+    padding: 1.5rem;
+    width: auto;
+  }
+  
+  .edit-form h2 {
+    font-size: 1.25rem;
+  }
+}

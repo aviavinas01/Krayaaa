@@ -1,0 +1,248 @@
+/* AddProduct.css */
+
+:root {
+  --krayaa-soft-green: #a8c0a0;
+  --krayaa-muted: #444;
+  --krayaa-black: #000000;
+  --krayaa-dark-gray: #0a0a0a;
+  --font-serif: 'Georgia', serif;
+  --font-mono: 'Courier New', monospace;
+}
+
+.add-product-page {
+  background-color: var(--krayaa-black);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 20px 60px 20px; /* Padding for fixed navbar */
+}
+
+.add-product-container {
+  display: flex;
+  width: 100%;
+  max-width: 1000px;
+  background: var(--krayaa-dark-gray);
+  border: 1px solid var(--primary-glow);
+  border-radius: 30px;
+  overflow: hidden;
+  z-index: 10;
+}
+
+/* --- Left Panel (Doodle/Info) --- */
+.form-doodle-panel {
+  flex: 1;
+  background-color: #050505;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-right: 1px solid #1a1a1a;
+}
+
+.doodle-header {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  color: var(--primary);
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.doodle-text {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--primary-dim);
+  line-height: 1.6;
+}
+
+/* --- Right Panel (Form) --- */
+.form-container {
+  flex: 1.2;
+  padding: 60px;
+}
+
+.form-container h2 {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  color: var(--primary-dim);
+  margin-bottom: 30px;
+  border-bottom: 1px solid #1a1a1a;
+  padding-bottom: 10px;
+}
+
+.error-text {
+  font-family: var(--font-mono);
+  color: #ff4444;
+  background: #200;
+  padding: 10px;
+  border: 1px solid #ff4444;
+  font-size: 0.8rem;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-group label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--krayaa-muted);
+  margin-bottom: 8px;
+}
+
+/* Inputs & Textarea */
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  background-color: #000;
+  border: 1px solid #222;
+  padding: 12px;
+  color: var(--primary-dim);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-group select {
+  cursor: pointer;
+  appearance: none; /* Removes default arrow */
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%232fac04' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--primary-glow);
+}
+
+/* File Input Styling */
+.form-group input[type="file"] {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--krayaa-muted);
+  background: #050505;
+  padding: 8px;
+  border: 1px dashed #222;
+  width: 100%;
+}
+
+.form-group input[type="file"]::-webkit-file-upload-button {
+  background: #111;
+  color: var(--primary-glow);
+  border: 1px solid var(--primary-dim);
+  padding: 5px 10px;
+  font-family: var(--font-mono);
+  cursor: pointer;
+  margin-right: 10px;
+  text-transform: uppercase;
+  font-size: 0.65rem;
+}
+
+/* Submit Button */
+.form-container button[type="submit"] {
+  width: 100%;
+  background-color: var(--primary-glow);
+  color: #000;
+  border: none;
+  padding: 15px;
+  font-family: var(--font-mono);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: 0.2s ease;
+  margin-top: 10px;
+}
+
+.form-container button[type="submit"]:hover:not(:disabled) {
+  background-color: var(--krayaa-soft-green);
+}
+
+.form-container button[type="submit"]:disabled {
+  background-color: #1a1a1a;
+  color: #333;
+  cursor: not-allowed;
+}
+/* ... (Your existing Desktop CSS remains unchanged above) ... */
+
+/* =========================================
+   MOBILE RESPONSIVE OVERRIDES
+   Replace the old media query with this one
+   ========================================= */
+
+@media screen and (max-width: 850px) {
+  
+  /* 1. Page Wrapper: Reduce the massive top gap */
+  .add-product-page {
+    padding: 60px 10px 20px 10px; /* Reduced from 100px top to 60px */
+    align-items: flex-start;      /* Aligns to top instead of center, easier for scrolling */
+  }
+
+  /* 2. Main Container: Stack vertically */
+  .add-product-container {
+    flex-direction: column;
+    max-width: 100%;
+    border-left: none;
+    border-right: none; /* Remove side borders on mobile for cleaner look */
+  }
+
+  /* 3. The "Doodle" Panel -> Transform into a Slim Header */
+  .form-doodle-panel {
+    padding: 20px 20px;   /* Drastically reduced from 60px */
+    flex: none;           /* Stop it from stretching */
+    border-right: none;   
+    border-bottom: 1px solid #1a1a1a;
+    text-align: center;   /* Center the text */
+    background: #0a0a0a;  /* Match page background for seamless look */
+  }
+
+  .doodle-header {
+    font-size: 1.5rem;    /* Smaller title */
+    margin-bottom: 5px;   /* Tighten gap */
+  }
+
+  .doodle-text {
+    font-size: 0.9rem;
+    display: none;        /* OPTIONAL: Hide the subtext to save even more space */
+  }
+
+  /* 4. The Form Panel -> Compact & Clean */
+  .form-container {
+    padding: 20px 15px;   /* Reduced from 60px */
+    flex: auto;
+  }
+
+  .form-container h2 {
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  /* 5. Tighter Form Groups */
+  .form-group {
+    margin-bottom: 15px; /* Reduce gap between inputs */
+  }
+
+  .form-group input[type="text"],
+  .form-group input[type="number"],
+  .form-group textarea,
+  .form-group select {
+    padding: 10px;       /* Slightly smaller padding */
+    font-size: 16px;     /* Prevents iOS zoom */
+  }
+
+  /* 6. Submit Button */
+  .form-container button[type="submit"] {
+    padding: 12px;
+    margin-top: 5px;
+  }
+}
