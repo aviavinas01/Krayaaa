@@ -14,7 +14,7 @@ function TopReplies() {
         const token = await auth.currentUser?.getIdToken();
 
         const res = await axios.get(
-          'http://localhost:5000/dashboard/top-replies',
+          'https://krayaaa.onrender.com/dashboard/top-replies',
           {
             headers: {
               Authorization: `Bearer ${token}`,

@@ -12,7 +12,7 @@ function HotTopics() {
       try {
         const token = await auth.currentUser?.getIdToken();
         const res = await axios.get(
-          'http://localhost:5000/dashboard/hot-topics',
+          'https://krayaaa.onrender.com/dashboard/hot-topics',
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -40,6 +40,7 @@ function HotTopics() {
 
   return (
     <section>
+
       {topics.length === 0 ? (
         <p>No hot topics</p>
       ) : (

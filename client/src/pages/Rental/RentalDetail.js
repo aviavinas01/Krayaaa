@@ -37,7 +37,7 @@ function RentalDetail() {
           const token = await auth.currentUser.getIdToken();
           headers.Authorization = `Bearer ${token}`;
         }
-        const res = await axios.get(`http://localhost:5000/rentals/${id}`,  { headers });
+        const res = await axios.get(`https://krayaaa.onrender.com/rentals/${id}`,  { headers });
         if (mounted) setRental(res.data);
       } catch (err) {
         console.error('Failed to load rental', err);

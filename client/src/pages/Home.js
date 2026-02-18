@@ -14,7 +14,7 @@ function Home() {
     useEffect(() => {
         const fetchEvents = async () => {
             try {
-                const res = await axios.get('http://localhost:5000/events');
+                const res = await axios.get('https://krayaaa.onrender.com/events');
                 setEvents(res.data);
                 setLoadingEvents(false);
             }catch(err){

@@ -45,7 +45,7 @@ function CompleteProfile() {
 
       // 1️⃣ Create profile in backend
       await axios.post(
-        'http://localhost:5000/users/create-user',
+        'https://krayaaa.onrender.com/users/create-user',
         form,
         {
           headers: { Authorization: `Bearer ${token}` },

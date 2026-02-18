@@ -107,7 +107,7 @@ function Discussion() {
   const handleReplyUpvote = async (replyId) => {
     const token = await auth.currentUser.getIdToken();
     const res = await axios.post(
-      `http://localhost:5000/discussions/replies/${replyId}/upvote`,
+      `https://krayaaa.onrender.com/discussions/replies/${replyId}/upvote`,
       {},
       { headers: { Authorization: `Bearer ${token}` } }
     );

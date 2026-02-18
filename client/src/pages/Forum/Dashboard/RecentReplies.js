@@ -13,7 +13,7 @@ function RecentReplies() {
         const token = await auth.currentUser?.getIdToken();
 
         const res = await axios.get(
-          'http://localhost:5000/dashboard/recent-replies',
+          'https://krayaaa.onrender.com/dashboard/recent-replies',
           {
             headers: {
               Authorization: `Bearer ${token}`,

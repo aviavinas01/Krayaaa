@@ -30,10 +30,10 @@ function HandshakePage() {
         const token = await auth.currentUser.getIdToken();
 
         const [hsRes, rentalsRes] = await Promise.all([
-          axios.get('http://localhost:5000/rentals/handshake/mine', {
+          axios.get('https://krayaaa.onrender.com/rentals/handshake/mine', {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          axios.get('http://localhost:5000/rentals/mine', {
+          axios.get('https://krayaaa.onrender.com/rentals/mine', {
             headers: { Authorization: `Bearer ${token}` },
           }),
         ]);
@@ -70,7 +70,7 @@ function HandshakePage() {
       const token = await auth.currentUser.getIdToken();
       try{
       await axios.post(
-        `http://localhost:5000/rentals/handshake/initiate/${selectedRental}`,
+        `https://krayaaa.onrender.com/rentals/handshake/initiate/${selectedRental}`,
         form,
         {
           headers: {
@@ -94,7 +94,7 @@ function HandshakePage() {
       const token = await auth.currentUser.getIdToken();
       
       await axios.post(
-        `http://localhost:5000/rentals/handshake/${handshakeId}/accept`,
+        `https://krayaaa.onrender.com/rentals/handshake/${handshakeId}/accept`,
         {}, // Empty body
         {
           headers: { Authorization: `Bearer ${token}` }
@@ -115,7 +115,7 @@ function HandshakePage() {
 
     try{
       const token = await auth.currentUser.getIdToken();
-      await axios.put(`http://localhost:5000/rentals/handshake/${txId}/return`, {}, {
+      await axios.put(`https://krayaaa.onrender.com/rentals/handshake/${txId}/return`, {}, {
         headers: { Authorization: `Bearer ${token}`}
       });
       window.location.reload();
@@ -131,7 +131,7 @@ function HandshakePage() {
 
     try{
       const token = await auth.currentUser.getIdToken();
-      await axios.post(`http://localhost:5000/rentals/handshake/${txId}/confirm`, {} , {
+      await axios.post(`https://krayaaa.onrender.com/rentals/handshake/${txId}/confirm`, {} , {
         headers: { Authorization: `Bearer ${token}`}
       });
       window.location.reload();
@@ -145,7 +145,7 @@ function HandshakePage() {
     e.preventDefault();
     try{
       const token = await auth.currentUser.getIdToken();
-      await axios.post(`http://localhost:5000/rentals/handshake/${reviewTargetId}/review`,
+      await axios.post(`https://krayaaa.onrender.com/rentals/handshake/${reviewTargetId}/review`,
         { rating: reviewRating, comment: reviewComment },
         { headers: { Authorization: `Bearer ${token}`}}
       );

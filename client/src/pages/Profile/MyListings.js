@@ -23,8 +23,8 @@ function MyListings() {
         const headers = { Authorization: `Bearer ${token}` };
 
         const [productsRes, rentalsRes] = await Promise.all([
-          axios.get('http://localhost:5000/products/mine', { headers }),
-          axios.get('http://localhost:5000/rentals/mine', { headers }),
+          axios.get('https://krayaaa.onrender.com/products/mine', { headers }),
+          axios.get('https://krayaaa.onrender.com/rentals/mine', { headers }),
         ]);
 
         if (!mounted) return;
@@ -49,7 +49,7 @@ function MyListings() {
     if (!window.confirm('Delete this product permanently?')) return;
     try {
       const token = await auth.currentUser.getIdToken();
-      await axios.delete(`http://localhost:5000/products/${id}`, {
+      await axios.delete(`https://krayaaa.onrender.com/products/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setProducts((prev) => prev.filter((p) => p._id !== id));
@@ -62,7 +62,7 @@ function MyListings() {
     if (!window.confirm('Delete this rental permanently?')) return;
     try {
       const token = await auth.currentUser.getIdToken();
-      await axios.delete(`http://localhost:5000/rentals/${id}`, {
+      await axios.delete(`https://krayaaa.onrender.com/rentals/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setRentals((prev) => prev.filter((r) => r._id !== id));

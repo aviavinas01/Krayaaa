@@ -22,7 +22,7 @@ function EditRental() {
     const fetchRental = async () => {
       const token = await auth.currentUser.getIdToken();
       const res = await axios.get(
-        `http://localhost:5000/rentals/${id}`,
+        `https://krayaaa.onrender.com/rentals/${id}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
@@ -49,7 +49,7 @@ function EditRental() {
     const token = await auth.currentUser.getIdToken();
 
     await axios.put(
-      `http://localhost:5000/rentals/${id}`,
+      `https://krayaaa.onrender.com/rentals/${id}`,
       {
         title: form.title,
         description: form.description,
@@ -74,10 +74,10 @@ function EditRental() {
       <input name="title" value={form.title} onChange={handleChange} required />
       <textarea name="description" value={form.description} onChange={handleChange} />
       <textarea name="rules" value={form.rules} onChange={handleChange} />
-
+    <div classname="price-row"> 
       <input name="perHour" value={form.perHour} onChange={handleChange} placeholder="₹/hour" />
       <input name="perDay" value={form.perDay} onChange={handleChange} placeholder="₹/day" />
-
+    </div>
       <button type="submit">Update Rental</button>
     </form>
   );

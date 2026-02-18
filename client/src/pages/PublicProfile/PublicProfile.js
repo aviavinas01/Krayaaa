@@ -61,7 +61,7 @@ function PublicProfile() {
       try {
         const token = await authData.firebaseUser.getIdToken();
         const res = await axios.get(
-          `http://localhost:5000/users/public/${username}`,
+          `https://krayaaa.onrender.com/users/public/${username}`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
         setData(res.data);

@@ -79,7 +79,7 @@ function AddProduct() {
             setLoading(true);
             const idToken = await auth.currentUser.getIdToken();
             const config = { headers: {'x-auth-token': idToken }};
-            await axios.post('http://localhost:5000/products/add', productData, config);
+            await axios.post('https://krayaaa.onrender.com/products/add', productData, config);
             navigate('/buy-sell');
         } catch (err) {
             setError(err.response?.data?.msg || 'Could not add product. Please try again.');

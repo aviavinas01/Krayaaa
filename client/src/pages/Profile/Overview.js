@@ -47,12 +47,12 @@ function ProfileOverview() {
       try {
         const token = await auth.currentUser.getIdToken();
         const headers = { Authorization: `Bearer ${token}` };
-        const profileRes = await axios.get('http://localhost:5000/profile/me', { headers });
+        const profileRes = await axios.get('https://krayaaa.onrender.com/profile/me', { headers });
         if (profileRes.data) {
           setProfile(profileRes.data);
           setBioTemp(profileRes.data.bio || '');
         }
-        const repliesRes = await axios.get('http://localhost:5000/discussions/mine/replies', { headers });
+        const repliesRes = await axios.get('https://krayaaa.onrender.com/discussions/mine/replies', { headers });
         setReplies(repliesRes.data);
       } catch (err) {
         console.error("Error fetching data:", err);
@@ -68,7 +68,7 @@ function ProfileOverview() {
     try {
       const token = await auth.currentUser.getIdToken();
       const updatedProfile = { ...profile, bio: bioTemp };
-      await axios.post('http://localhost:5000/profile/me', updatedProfile, {
+      await axios.post('https://krayaaa.onrender.com/profile/me', updatedProfile, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setProfile(updatedProfile);
@@ -88,7 +88,7 @@ function ProfileOverview() {
       const token = await auth.currentUser.getIdToken();
       const updatedSocials = { ...profile.socials, [selectedPlatform]: socialLinkTemp };
       const updatedProfile = { ...profile, socials: updatedSocials };
-      await axios.post('http://localhost:5000/profile/me', updatedProfile, {
+      await axios.post('https://krayaaa.onrender.com/profile/me', updatedProfile, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setProfile(updatedProfile);

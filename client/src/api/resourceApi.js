@@ -3,7 +3,7 @@ import { auth} from '../firebaseconfig';
 import { getAuth } from 'firebase/auth';
 
 // Ensure this matches your backend URL
-const API_URL = 'http://localhost:5000/api/resources';
+const API_URL = 'http://krayaaa.onrender.com/api/resources';
 
 // Helper to get the token from localStorage (assuming you store it there)
 const getAuthHeaders = async () => {

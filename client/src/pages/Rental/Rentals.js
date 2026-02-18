@@ -42,7 +42,7 @@ function Rentals() {
           }
         }
 
-        const res = await axios.get('http://localhost:5000/rentals', { headers });
+        const res = await axios.get('https://krayaaa.onrender.com/rentals', { headers });
         // Ensure we always set an array
         if (mounted) setRentals(Array.isArray(res.data) ? res.data : []);
       } catch (err) {

@@ -25,7 +25,7 @@ function ProductList() {
         setSearchQuery(query);
 
         
-        axios.get('http://localhost:5000/products')
+        axios.get('https://krayaaa.onrender.com/products')
             .then(response => {
                 setProducts(response.data);
                 setIsLoading(false);

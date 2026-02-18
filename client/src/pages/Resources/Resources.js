@@ -38,7 +38,7 @@ const Resources = () => {
                 year: filterYear, // Optional
             }).toString();
 
-            const res = await axios.get(`http://localhost:5000/resources?${query}`);
+            const res = await axios.get(`https://krayaaa.onrender.com/resources?${query}`);
             setResources(res.data);
         } catch (err) {
             console.error("Failed to fetch resources", err);
@@ -64,7 +64,7 @@ const Resources = () => {
     const checkUploadPermission = async () => {
         try {
             const token = await auth.currentUser.getIdToken();
-            const res = await axios.get('http://localhost:5000/resouces/upload-status', {
+            const res = await axios.get('https://krayaaa.onrender.com/resouces/upload-status', {
                 headers: { 'x-auth-tojen': token}
             });
             setCanUpload(res.data.canUpload);

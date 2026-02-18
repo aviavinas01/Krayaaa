@@ -31,7 +31,7 @@ const AdminDashboard = () => {
   const fetchEvents = async () => {
     try {
         const token = await auth.currentUser.getIdToken();
-        const res = await axios.get('http://localhost:5000/admin/events', {
+        const res = await axios.get('https://krayaaa.onrender.com/admin/events', {
             headers: { 'Authorization': `Bearer ${token}` }
         });
         setEvents(res.data);
@@ -43,7 +43,7 @@ const AdminDashboard = () => {
   const fetchReports = async () => {
     try {
         const token = await auth.currentUser.getIdToken();
-        const res = await axios.get('http://localhost:5000/admin/reports', {
+        const res = await axios.get('https://krayaaa.onrender.com/admin/reports', {
             headers: { 'Authorization': `Bearer ${token}` }
         });
         setReports(res.data);
@@ -56,7 +56,7 @@ const AdminDashboard = () => {
     e.preventDefault();
     try {  
         const token = await auth.currentUser.getIdToken();
-        await axios.post('http://localhost:5000/admin/events', 
+        await axios.post('https://krayaaa.onrender.com/admin/events', 
             {  ...newEvent},
             {
                 headers: { 'Authorization': `Bearer ${token}` }
@@ -74,7 +74,7 @@ const AdminDashboard = () => {
       if(!window.confirm("Are you sure you want to delete this event?")) return;
       try {
         const token = await auth.currentUser.getIdToken();
-        await axios.delete(`http://localhost:5000/admin/events/${id}`, {
+        await axios.delete(`https://krayaaa.onrender.com/admin/events/${id}`, {
             headers: { 'Authorization': `Bearer ${token}` }
         });
         fetchEvents();
@@ -86,7 +86,7 @@ const AdminDashboard = () => {
   const handleReportAction = async (id, status) => {
       try {
         const token = await auth.currentUser.getIdToken();
-        await axios.put(`http://localhost:5000/admin/reports/${id}`, { status }, {
+        await axios.put(`https://krayaaa.onrender.com/admin/reports/${id}`, { status }, {
             headers: { 'Authorization': `Bearer ${token}` }
         });
         fetchReports(); // Refresh list to remove resolved items

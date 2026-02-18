@@ -16,7 +16,7 @@ function Notifications() {
       const token = await auth.currentUser.getIdToken();
 
       const res = await axios.get(
-        'http://localhost:5000/notifications',
+        'https://krayaaa.onrender.com/notifications',
         {headers:{Authorization: `Bearer ${token}`}}
       );
       setNotifications(res.data);
@@ -41,7 +41,7 @@ function Notifications() {
     try {
       const token = await auth.currentUser.getIdToken();
       await axios.patch(
-        `http://localhost:5000/notifications/${id}/isread`,
+        `https://krayaaa.onrender.com/notifications/${id}/isread`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );

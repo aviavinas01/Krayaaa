@@ -21,7 +21,7 @@ function EditProduct() {
     const fetchProduct = async () => {
       const token = await auth.currentUser.getIdToken();
       const res = await axios.get(
-        `http://localhost:5000/products/${id}`,
+        `https://krayaaa.onrender.com/products/${id}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
@@ -47,7 +47,7 @@ function EditProduct() {
     const token = await auth.currentUser.getIdToken();
 
     await axios.patch(
-      `http://localhost:5000/products/${id}`,
+      `https://krayaaa.onrender.com/products/${id}`,
       form,
       { headers: { Authorization: `Bearer ${token}` } }
     );

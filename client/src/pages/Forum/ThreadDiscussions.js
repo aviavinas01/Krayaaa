@@ -32,12 +32,12 @@ function ThreadDiscussions() {
         const config = { headers: { Authorization: `Bearer ${Token}` } };
 
         const threadRes = await axios.get(
-          `http://localhost:5000/forums/threads/${threadKey}`,
+          `https://krayaaa.onrender.com/forums/threads/${threadKey}`,
           config
         );
 
         const discussionsRes = await axios.get(
-          `http://localhost:5000/discussions/threads/${threadKey}`,
+          `https://krayaaa.onrender.com/discussions/threads/${threadKey}`,
           config
         );
 
@@ -66,7 +66,7 @@ function ThreadDiscussions() {
       const idToken = await auth.currentUser.getIdToken();
       const config = { headers: { Authorization: `Bearer ${idToken}` } };
       const res = await axios.post(
-        `http://localhost:5000/discussions/threads/${threadKey}`,
+        `https://krayaaa.onrender.com/discussions/threads/${threadKey}`,
         { title, content },
         config
       );

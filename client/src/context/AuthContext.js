@@ -40,7 +40,7 @@ export const AuthProvider = ({ children }) => {
         const token = await firebaseUser.getIdToken(true);
 
         const res = await axios.get(
-          `http://localhost:5000/users/profile/${firebaseUser.uid}`,
+          `https://krayaaa.onrender.com/users/profile/${firebaseUser.uid}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -57,7 +57,7 @@ export const AuthProvider = ({ children }) => {
         });
 
       } catch (err) {
-        // ✅ Expected case for new users
+        // Expected case for new users
         if (err.response?.status === 404) {
           setAuthData({
             isLoggedIn: true,
@@ -93,7 +93,7 @@ export const AuthProvider = ({ children }) => {
     try {
       const token = await firebaseUser.getIdToken(true);
       const res = await axios.get(
-        `http://localhost:5000/users/profile/${firebaseUser.uid}`,
+        `https://krayaaa.onrender.com/users/profile/${firebaseUser.uid}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

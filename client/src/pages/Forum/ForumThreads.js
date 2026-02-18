@@ -22,7 +22,7 @@ function ForumThreads() {
   useEffect(() => {
     if (authData.isLoggedIn) {
       axios
-        .get('http://localhost:5000/forums/threads')
+        .get('https://krayaaa.onrender.com/forums/threads')
         .then((res) => {
           setThreads(res.data);
           setLoading(false);

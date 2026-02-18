@@ -18,7 +18,7 @@ function ReportForm({ targetType, targetRef, onClose }) {
       const token = await auth.currentUser.getIdToken();
 
       await axios.post(
-        'http://localhost:5000/reports',
+        'https://krayaaa.onrender.com/reports',
         {
           targetType,
           targetRef,

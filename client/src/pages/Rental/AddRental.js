@@ -62,7 +62,7 @@ function AddRental() {
       images.forEach((img) => formData.append('images', img));
 
       await axios.post(
-        'http://localhost:5000/rentals/add',
+        'https://krayaaa.onrender.com/rentals/add',
         formData,
         {
           headers: {

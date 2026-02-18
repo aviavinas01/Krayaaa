@@ -22,7 +22,7 @@ function ProductDetail() {
                 headers: token ? { Authorization: `Bearer ${token}` } : {}
             };
 
-            const response = await axios.get(`http://localhost:5000/products/${id}`, config);
+            const response = await axios.get(`https://krayaaa.onrender.com/products/${id}`, config);
             setProduct(response.data);
             if (response.data.imageUrls && response.data.imageUrls.length > 0) {
                 setActiveImage(response.data.imageUrls[0]);

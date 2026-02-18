@@ -57,7 +57,7 @@ function Navbar() {
       try {
         const token = await authData.firebaseUser.getIdToken();
         const res = await axios.get(
-          'http://localhost:5000/notifications/latest?limit=6',
+          'https://krayaaa.onrender.com/notifications/latest?limit=6',
           {headers: { Authorization: `Bearer ${token}`}}
         );
         setNotifications(res.data);

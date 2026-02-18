@@ -48,7 +48,7 @@ const AddResourceModal = ({ close, prefillData, onSuccess }) => {
             const config = { headers: { 'x-auth-token': token } };
 
             // A. GET SIGNATURE (Secure)
-            const signRes = await axios.get('http://localhost:5000/resources/sign-upload', config);
+            const signRes = await axios.get('https://krayaaa.onrender.com/resources/sign-upload', config);
             const { timestamp, signature, apiKey, cloudName } = signRes.data;
 
             // B. UPLOAD TO CLOUDINARY
@@ -70,7 +70,7 @@ const AddResourceModal = ({ close, prefillData, onSuccess }) => {
                 fileUrl: cloudRes.data.secure_url
             };
 
-            await axios.post('http://localhost:5000/resources/upload', backendPayload, config);
+            await axios.post('https://krayaaa.onrender.com/resources/upload', backendPayload, config);
 
             // D. SUCCESS & LOCKDOWN
             // Alert parent to disable button immediately

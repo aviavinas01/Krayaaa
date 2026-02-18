@@ -35,7 +35,7 @@ export const ThemeProvider = ({ children }) => {
             try {
                 const token = await auth.currentUser.getIdToken();
                 // 4. Send the request with the fresh token
-                await axios.put('http://localhost:5000/profile/theme', 
+                await axios.put('https://krayaaa.onrender.com/profile/theme', 
                     { theme: newTheme }, 
                     { headers: { Authorization: `Bearer ${token}` } }
                 );
