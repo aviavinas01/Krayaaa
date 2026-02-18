@@ -12,6 +12,7 @@ const discussionsRouter = require('./routes/discussions.js');
 const rentalsRouter = require('./routes/rentals');
 const eventRoutes = require('./routes/events');
 const resourceRoutes = require('./routes/resource.js');
+const multer = require('multer');
 
 const User = require('./models/User.js');
 const Product = require('./models/Product.js');
@@ -79,13 +80,14 @@ app.use('/events', eventRoutes);
 app.use('/api/resources', resourceRoutes);
 
 
-//SERVE STATIC ASSETS IN PRODUCTION
+/*
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '../client/build')));
     app.get('*', (req, res) => {
         res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html'));
     });
 }
+    */
 
 // --- 5. START THE SERVER ---
 app.listen(PORT, () => {
