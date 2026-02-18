@@ -22,7 +22,5 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-# Ignore Firebase Admin Keys
-*.json
 # OR strict filename:
 krayaa-3d95d-firebase-adminsdk-fbsvc-65c9d10197.json
