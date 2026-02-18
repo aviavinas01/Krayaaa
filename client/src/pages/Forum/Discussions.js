@@ -48,7 +48,7 @@ function Discussion() {
       try {
         const token = await auth.currentUser.getIdToken();
         const res = await axios.get(
-          `http://localhost:5000/discussions/${id}`,
+          `https://krayaaa.onrender.com/discussions/${id}`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
 
@@ -92,7 +92,7 @@ function Discussion() {
 
     const token = await auth.currentUser.getIdToken();
     const res = await axios.post(
-      `http://localhost:5000/discussions/${id}/reply`,
+      `https://krayaaa.onrender.com/discussions/${id}/reply`,
       { content, parentReplyId },
       { headers: { Authorization: `Bearer ${token}` } }
     );
