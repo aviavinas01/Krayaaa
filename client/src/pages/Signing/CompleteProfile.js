@@ -31,6 +31,7 @@ function CompleteProfile() {
 
   const submitProfile = async (e) => {
     e.preventDefault();
+    console.log("🚦 1. Submit button clicked");
 
     if (!form.avatarId) {
       alert('Please select an avatar to initialize your profile.');
@@ -39,27 +40,37 @@ function CompleteProfile() {
 
     try {
       const firebaseUser = auth.currentUser;
-      if (!firebaseUser) return;
+      console.log("👤 2. Firebase User status:", firebaseUser ? "Logged In" : "NULL");
+      
+      if (!firebaseUser) {
+        alert("Session expired or user not logged in via Firebase. Please log in again.");
+        return;
+      }
 
       const token = await firebaseUser.getIdToken(true);
+      console.log("🔑 3. Token retrieved, sending data to backend...");
 
       // 1️⃣ Create profile in backend
-      await axios.post(
+      const response = await axios.post(
         'https://krayaaa.onrender.com/users/create-user',
         form,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
+      console.log("✅ 4. Backend responded successfully:", response.data);
 
-      // 2️⃣ Re-sync AuthContext (Re-fetches user data from DB)
+      // 2️⃣ Re-sync AuthContext
+      console.log("🔄 5. Syncing AuthContext...");
       await completeProfile();
+      console.log("✅ 6. AuthContext synced!");
 
       // 3️⃣ Finalize
+      console.log("🚀 7. Redirecting to home...");
       navigate('/', { replace: true });
 
     } catch (err) {
-      console.error('Initialization error:', err);
+      console.error('❌ Initialization error:', err);
       alert(err.response?.data?.msg || 'Failed to initialize profile.');
     }
   };
