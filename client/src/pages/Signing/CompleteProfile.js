@@ -31,7 +31,7 @@ function CompleteProfile() {
 
   const submitProfile = async (e) => {
     e.preventDefault();
-    console.log("🚦 1. Submit button clicked");
+
 
     if (!form.avatarId) {
       alert('Please select an avatar to initialize your profile.');
@@ -48,7 +48,7 @@ function CompleteProfile() {
       }
 
       const token = await firebaseUser.getIdToken(true);
-      console.log("🔑 3. Token retrieved, sending data to backend...");
+     
 
       // 1️⃣ Create profile in backend
       const response = await axios.post(
@@ -58,15 +58,9 @@ function CompleteProfile() {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-      console.log("✅ 4. Backend responded successfully:", response.data);
 
-      // 2️⃣ Re-sync AuthContext
-      console.log("🔄 5. Syncing AuthContext...");
       await completeProfile();
-      console.log("✅ 6. AuthContext synced!");
 
-      // 3️⃣ Finalize
-      console.log("🚀 7. Redirecting to home...");
       navigate('/', { replace: true });
 
     } catch (err) {
