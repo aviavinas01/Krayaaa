@@ -77,7 +77,11 @@ function ThreadDiscussions() {
       setIsFormVisible(false);
     } catch (err) {
       console.error('Error creating discussion:', err);
-      setError('Failed to create discussion.');
+      if(err.response && err.response.status === 403){
+        setError('You need at least 10 reputation points to start a discussion.');
+      } else {
+        setError('Failed to create discussion.');
+      }
     } finally {
       setIsSubmitting(false);
     }
