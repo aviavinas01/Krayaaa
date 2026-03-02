@@ -39,8 +39,6 @@ const productSchema = new Schema({
     timestamps: true,
 });
 
-// A Mongoose Model provides an interface to the database for creating,
-// querying, updating, deleting records, etc.
 const Product = mongoose.model('Product', productSchema);
 
 module.exports = Product;

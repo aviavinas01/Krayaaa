@@ -4,6 +4,7 @@ const reportSchema = new mongoose.Schema(
   {
     reporterUid: {
       type: String,
+      ref: 'User',
       required: true,
       index: true,
     },

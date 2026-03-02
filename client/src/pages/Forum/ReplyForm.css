@@ -11,7 +11,7 @@
 .krayaa-textarea {
   width: 100%;
   background-color: #080808; /* Slightly lighter than pure black */
-  border: 1px solid   #f3f4f3;
+  border: 1px solid var(--krayaa-border, #f3f4f3);
   color: var(--krayaa-soft-green, #a8c0a0);
   font-family: var(--font-serif, serif);
   font-size: 0.95rem;

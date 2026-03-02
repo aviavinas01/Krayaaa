@@ -9,7 +9,7 @@ const rentalSchema = new mongoose.Schema(
     },
 
     ownerUsername: {
-      type: String,
+      type: String, 
       required: true,
     },
 

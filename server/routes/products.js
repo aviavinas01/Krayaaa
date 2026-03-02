@@ -50,11 +50,6 @@ router.get('/mine', auth, requireProfile, async (req, res) => {
  */
 router.post('/add', auth, requireProfile,listingLimits({model:Product,ownerField:'user',type:'product',}), upload.array('images', 3), async (req, res) => {
   try {
-    console.log("---------------- DEBUGGING ----------------");
-    console.log("1. Cloud Name:", process.env.CLOUD_NAME);
-    console.log("2. API Key:", process.env.API_KEY);
-    console.log("3. API Secret:", process.env.API_SECRET ? "****(Exists)" : "MISSING");
-    console.log("-------------------------------------------");
     if (!req.files || req.files.length === 0) {
       return res.status(400).json({ msg: 'Please upload at least one image.' });
     }
